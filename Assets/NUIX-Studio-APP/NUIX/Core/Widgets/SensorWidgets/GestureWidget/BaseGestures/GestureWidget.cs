@@ -45,6 +45,17 @@ public abstract class GestureWidget : Sensor
     /// </summary>
     public void GestureEventTrigger()
     {
+        // Debug.Log("DEBUG GLOBAL THUMB GRAB:"+IsThumbGrabbing(_handedness_right).ToString());
+        // Debug.Log("DEBUG GLOBAL THUMB STRAIGHT:"+IsThumbStraight(_handedness_right).ToString());
+        // Debug.Log("DEBUG GLOBAL INDEX GRAB:"+IsIndexGrabbing(_handedness_right).ToString());
+        // Debug.Log("DEBUG GLOBAL INDEX STRAIGHT:"+IsIndexStraight(_handedness_right).ToString());
+        // Debug.Log("DEBUG GLOBAL MIDDLE GRAB:"+IsMiddleGrabbing(_handedness_right).ToString());
+        // Debug.Log("DEBUG GLOBAL MIDDLE STRAIGHT:"+IsMiddleStraight(_handedness_right).ToString());
+        // Debug.Log("DEBUG GLOBAL RING GRAB:"+IsRingGrabbing(_handedness_right).ToString());
+        // Debug.Log("DEBUG GLOBAL RING STRAIGHT:"+IsRingStraight(_handedness_right).ToString());
+        // Debug.Log("DEBUG GLOBAL PINKY GRAB:"+IsPinkyGrabbing(_handedness_right).ToString());
+        // Debug.Log("DEBUG GLOBAL PINKY STRAIGHT:"+IsPinkyStraight(_handedness_right).ToString());
+
         if (GestureCondition())
         {
             if (countDownStarted == false)
@@ -93,19 +104,14 @@ public abstract class GestureWidget : Sensor
 
     protected bool IsMiddleGrabbing(Handedness hand)
     {
-        return HandPoseUtils.IsMiddleGrabbing(hand);
-    }
-   
-    protected bool IsPinkyGrabbing(Handedness hand)
-    {
         if (HandJointUtils.TryGetJointPose(TrackedHandJoint.Wrist, hand, out var wristPose) &&
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.PinkyTip, hand, out var indexTipPose) &&
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.PinkyKnuckle, hand, out var indexKnucklePose))
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, hand, out var tipPose) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleKnuckle, hand, out var knucklePose))
         {
             // compare wrist-knuckle to wrist-tip
-            Vector3 wristToIndexTip = indexTipPose.Position - wristPose.Position;
-            Vector3 wristToIndexKnuckle = indexKnucklePose.Position - wristPose.Position;
-            return wristToIndexKnuckle.sqrMagnitude >= wristToIndexTip.sqrMagnitude;
+            Vector3 wristToIndexTip = tipPose.Position - wristPose.Position;
+            Vector3 wristToIndexKnuckle = knucklePose.Position - wristPose.Position;
+            return wristToIndexKnuckle.sqrMagnitude + 0.02 >= wristToIndexTip.sqrMagnitude;
         }
         return false;
     }
@@ -113,13 +119,27 @@ public abstract class GestureWidget : Sensor
     protected bool IsRingGrabbing(Handedness hand)
     {
         if (HandJointUtils.TryGetJointPose(TrackedHandJoint.Wrist, hand, out var wristPose) &&
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.RingTip, hand, out var indexTipPose) &&
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.RingKnuckle, hand, out var indexKnucklePose))
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.RingTip, hand, out var tipPose) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.RingKnuckle, hand, out var knucklePose))
         {
             // compare wrist-knuckle to wrist-tip
-            Vector3 wristToIndexTip = indexTipPose.Position - wristPose.Position;
-            Vector3 wristToIndexKnuckle = indexKnucklePose.Position - wristPose.Position;
-            return wristToIndexKnuckle.sqrMagnitude >= wristToIndexTip.sqrMagnitude;
+            Vector3 wristToIndexTip = tipPose.Position - wristPose.Position;
+            Vector3 wristToIndexKnuckle = knucklePose.Position - wristPose.Position;
+            return wristToIndexKnuckle.sqrMagnitude + 0.02 >= wristToIndexTip.sqrMagnitude;
+        }
+        return false;
+    }
+   
+    protected bool IsPinkyGrabbing(Handedness hand)
+    {
+        if (HandJointUtils.TryGetJointPose(TrackedHandJoint.Wrist, hand, out var wristPose) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.PinkyTip, hand, out var tipPose) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.PinkyKnuckle, hand, out var knucklePose))
+        {
+            // compare wrist-knuckle to wrist-tip
+            Vector3 wristToIndexTip = tipPose.Position - wristPose.Position;
+            Vector3 wristToIndexKnuckle = knucklePose.Position - wristPose.Position;
+            return wristToIndexKnuckle.sqrMagnitude + 0.01 >= wristToIndexTip.sqrMagnitude;
         }
         return false;
     }
@@ -134,8 +154,8 @@ public abstract class GestureWidget : Sensor
             HandJointUtils.TryGetJointPose(TrackedHandJoint.ThumbDistalJoint, hand, out var p3) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.ThumbTip, hand, out var p4) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, hand, out var q1) &&
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexKnuckle, hand, out var q2) &&
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.RingKnuckle, hand, out var q3)
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleKnuckle, hand, out var q2) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.PinkyKnuckle, hand, out var q3)
         )
         {
             Vector3 norm = Vector3.Cross(q2.Position - q1.Position, q3.Position - q1.Position).normalized;
@@ -145,7 +165,7 @@ public abstract class GestureWidget : Sensor
             Debug.Log("DEBUG THUMB angle:" + angle.ToString());
             return Vector3.Angle(p2.Position - p1.Position, p3.Position - p1.Position) <= 20
                 && Vector3.Angle(p2.Position - p1.Position, p4.Position - p1.Position) <= 20
-                && 70 <= angle && angle <= 110;
+                && 80 <= angle && angle <= 100;
         }
         return false;
     }
@@ -169,7 +189,7 @@ public abstract class GestureWidget : Sensor
             Debug.Log("DEBUG INDEX angle:" + angle.ToString());
             return Vector3.Angle(p2.Position - p1.Position, p3.Position - p1.Position) <= 20
                 && Vector3.Angle(p2.Position - p1.Position, p4.Position - p1.Position) <= 20
-                && 70 <= angle && angle <= 110;
+                && 60 <= angle && angle <= 120;
         }
         return false;
     }
@@ -193,7 +213,7 @@ public abstract class GestureWidget : Sensor
             Debug.Log("DEBUG Middle angle:" + angle.ToString());
             return Vector3.Angle(p2.Position - p1.Position, p3.Position - p1.Position) <= 20
                 && Vector3.Angle(p2.Position - p1.Position, p4.Position - p1.Position) <= 20
-                && 70 <= angle && angle <= 110;
+                && 60 <= angle && angle <= 120;
         }
         return false;
     }
@@ -204,7 +224,7 @@ public abstract class GestureWidget : Sensor
             HandJointUtils.TryGetJointPose(TrackedHandJoint.RingKnuckle, hand, out var p1) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.RingMiddleJoint, hand, out var p2) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.RingDistalJoint, hand, out var p3) &&
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.PinkyTip, hand, out var p4) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.RingTip, hand, out var p4) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, hand, out var q1) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexKnuckle, hand, out var q2) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.RingKnuckle, hand, out var q3)
@@ -217,7 +237,7 @@ public abstract class GestureWidget : Sensor
             Debug.Log("DEBUG Ring angle:" + angle.ToString());
             return Vector3.Angle(p2.Position - p1.Position, p3.Position - p1.Position) <= 20
                 //&& Vector3.Angle(p2.Position - p1.Position, p4.Position - p1.Position) <= 20
-                && 70 <= angle && angle <= 110;
+                && 60 <= angle && angle <= 120;
         }
         return false;
     }
