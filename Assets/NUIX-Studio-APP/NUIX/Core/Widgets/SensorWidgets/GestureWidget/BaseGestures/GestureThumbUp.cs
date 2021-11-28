@@ -1,6 +1,6 @@
 ﻿using Microsoft.MixedReality.Toolkit.Utilities;
 
-public class GestureThumbsUp : GestureWidget
+public class GestureThumbUp : GestureWidget
 {
     public override bool GestureCondition()
     {
