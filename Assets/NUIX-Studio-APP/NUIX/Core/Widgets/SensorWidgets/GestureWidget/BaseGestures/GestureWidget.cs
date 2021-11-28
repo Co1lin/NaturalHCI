@@ -134,8 +134,8 @@ public abstract class GestureWidget : Sensor
             HandJointUtils.TryGetJointPose(TrackedHandJoint.ThumbDistalJoint, hand, out var p3) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.ThumbTip, hand, out var p4) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, hand, out var q1) &&
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleKnuckle, hand, out var q2) &&
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.PinkyKnuckle, hand, out var q3)
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexKnuckle, hand, out var q2) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.RingKnuckle, hand, out var q3)
         )
         {
             Vector3 norm = Vector3.Cross(q2.Position - q1.Position, q3.Position - q1.Position).normalized;
@@ -158,8 +158,8 @@ public abstract class GestureWidget : Sensor
             HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexDistalJoint, hand, out var p3) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand, out var p4) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, hand, out var q1) &&
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleKnuckle, hand, out var q2) &&
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.PinkyKnuckle, hand, out var q3)
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexKnuckle, hand, out var q2) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.RingKnuckle, hand, out var q3)
         )
         {
             Vector3 norm = Vector3.Cross(q2.Position - q1.Position, q3.Position - q1.Position).normalized;
@@ -182,8 +182,8 @@ public abstract class GestureWidget : Sensor
             HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleDistalJoint, hand, out var p3) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, hand, out var p4) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, hand, out var q1) &&
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleKnuckle, hand, out var q2) &&
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.PinkyKnuckle, hand, out var q3)
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexKnuckle, hand, out var q2) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.RingKnuckle, hand, out var q3)
         )
         {
             Vector3 norm = Vector3.Cross(q2.Position - q1.Position, q3.Position - q1.Position).normalized;
@@ -206,8 +206,8 @@ public abstract class GestureWidget : Sensor
             HandJointUtils.TryGetJointPose(TrackedHandJoint.RingDistalJoint, hand, out var p3) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.PinkyTip, hand, out var p4) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, hand, out var q1) &&
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleKnuckle, hand, out var q2) &&
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.PinkyKnuckle, hand, out var q3)
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexKnuckle, hand, out var q2) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.RingKnuckle, hand, out var q3)
         )
         {
             Vector3 norm = Vector3.Cross(q2.Position - q1.Position, q3.Position - q1.Position).normalized;
@@ -230,8 +230,8 @@ public abstract class GestureWidget : Sensor
             HandJointUtils.TryGetJointPose(TrackedHandJoint.PinkyDistalJoint, hand, out var p3) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.PinkyTip, hand, out var p4) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, hand, out var q1) &&
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleKnuckle, hand, out var q2) &&
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.PinkyKnuckle, hand, out var q3)
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexKnuckle, hand, out var q2) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.RingKnuckle, hand, out var q3)
         )
         {
             Vector3 norm = Vector3.Cross(q2.Position - q1.Position, q3.Position - q1.Position).normalized;
