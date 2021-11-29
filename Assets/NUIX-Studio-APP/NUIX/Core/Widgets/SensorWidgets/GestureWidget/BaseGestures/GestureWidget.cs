@@ -111,7 +111,7 @@ public abstract class GestureWidget : Sensor
             // compare wrist-knuckle to wrist-tip
             Vector3 wristToIndexTip = tipPose.Position - wristPose.Position;
             Vector3 wristToIndexKnuckle = knucklePose.Position - wristPose.Position;
-            return wristToIndexKnuckle.sqrMagnitude + 0.02 >= wristToIndexTip.sqrMagnitude;
+            return wristToIndexKnuckle.sqrMagnitude + 0.005 >= wristToIndexTip.sqrMagnitude;
         }
         return false;
     }
@@ -125,7 +125,7 @@ public abstract class GestureWidget : Sensor
             // compare wrist-knuckle to wrist-tip
             Vector3 wristToIndexTip = tipPose.Position - wristPose.Position;
             Vector3 wristToIndexKnuckle = knucklePose.Position - wristPose.Position;
-            return wristToIndexKnuckle.sqrMagnitude + 0.02 >= wristToIndexTip.sqrMagnitude;
+            return wristToIndexKnuckle.sqrMagnitude + 0.005 >= wristToIndexTip.sqrMagnitude;
         }
         return false;
     }
@@ -139,7 +139,7 @@ public abstract class GestureWidget : Sensor
             // compare wrist-knuckle to wrist-tip
             Vector3 wristToIndexTip = tipPose.Position - wristPose.Position;
             Vector3 wristToIndexKnuckle = knucklePose.Position - wristPose.Position;
-            return wristToIndexKnuckle.sqrMagnitude + 0.01 >= wristToIndexTip.sqrMagnitude;
+            return wristToIndexKnuckle.sqrMagnitude + 0.005 >= wristToIndexTip.sqrMagnitude;
         }
         return false;
     }
@@ -165,7 +165,7 @@ public abstract class GestureWidget : Sensor
             Debug.Log("DEBUG THUMB angle:" + angle.ToString());
             return Vector3.Angle(p2.Position - p1.Position, p3.Position - p1.Position) <= 20
                 && Vector3.Angle(p2.Position - p1.Position, p4.Position - p1.Position) <= 20
-                && 80 <= angle && angle <= 100;
+                && 70 <= angle && angle <= 110;
         }
         return false;
     }
@@ -324,7 +324,20 @@ public abstract class GestureWidget : Sensor
 
     protected bool IsSeven(Handedness hand)
     {
-        return false; // TODO
+        if (
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.ThumbTip, hand, out var p1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand, out var p2) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, hand, out var p3)
+        )
+        {
+            Debug.Log("FUCK 1:"+(p2.Position-p1.Position).sqrMagnitude.ToString());
+            Debug.Log("FUCK 2:"+(p3.Position-p1.Position).sqrMagnitude.ToString());
+            Debug.Log("FUCK 3:"+(p3.Position-p2.Position).sqrMagnitude.ToString());
+            return (p2.Position-p1.Position).sqrMagnitude <= 0.0008
+                && (p3.Position-p1.Position).sqrMagnitude <= 0.0008
+                && !IsThumbGrabbing(hand) && !IsIndexGrabbing(hand) && !IsMiddleGrabbing(hand);
+        }
+        return false;
     }
 
     protected bool IsEight(Handedness hand)
@@ -338,7 +351,28 @@ public abstract class GestureWidget : Sensor
 
     protected bool IsNine(Handedness hand)
     {
-        return false; // TODO
+        if (
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexKnuckle, hand, out var p1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexMiddleJoint, hand, out var p2) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexDistalJoint, hand, out var p3) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand, out var p4) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, hand, out var q1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexKnuckle, hand, out var q2) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.RingKnuckle, hand, out var q3)
+        )
+        {
+            Vector3 norm = Vector3.Cross(q2.Position - q1.Position, q3.Position - q1.Position).normalized;
+            float angle = Mathf.Abs(Vector3.SignedAngle(p2.Position - p1.Position, norm, q2.Position - q1.Position));
+            float angle1 = Vector3.Angle(p2.Position - p1.Position, p3.Position - p2.Position);
+            float angle2 = Vector3.Angle(p3.Position - p2.Position, p4.Position - p3.Position);
+            Debug.Log("DEBUG NINE INDEX 1:" + angle1.ToString());
+            Debug.Log("DEBUG NINE INDEX 2:" + angle2.ToString());
+            Debug.Log("DEBUG NINE INDEX angle:" + angle.ToString());
+            return 50 <= angle1 && angle1 <= 130
+                && 50 <= angle2 && angle2 <= 130
+                && 60 <= angle && angle <= 120;
+        }
+        return false;
     }
 
     protected bool IsZero(Handedness hand)
