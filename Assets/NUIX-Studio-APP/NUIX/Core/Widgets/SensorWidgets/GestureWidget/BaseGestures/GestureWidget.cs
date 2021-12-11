@@ -567,16 +567,19 @@ public abstract class GestureWidget : Sensor
             HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, hand, out var p2)
         )
         {
-            Vector3 vec = camera.WorldToViewportPoint(p2.Position) - camera.WorldToViewportPoint(p1.Position);
+            if(p1.y < camera.localPosition.y - 0.3) return false;
+            Vector3 tmp = camera.WorldToViewportPoint(p2.Position) - camera.WorldToViewportPoint(p1.Position);
+            Vector3 vec = (tmp.x, tmp.y, 0);
             Debug.Log("Wave Right:  " + vec.ToString());
             Vector3 up = new Vector3( 0, 1, 0 ); // up direction
             Vector3 parallel = new Vector3( 1, 0, 0 );
-            float angle_up = Vector3.Angle(vec, up);
+            // float angle_up = Vector3.Angle(vec, up);
             float angle_parallel = Vector3.Angle(vec, parallel);
-            Debug.Log("Wave Right angle_up:  " + angle_up.ToString());
+            // Debug.Log("Wave Right angle_up:  " + angle_up.ToString());
             Debug.Log("Wave Right angle_parallel:  " + angle_parallel.ToString());
-            return (angle_up >= 45 && angle_up <= 135) &&
-                    (angle_parallel <= 75);
+            // return (angle_up >= 45 && angle_up <= 135) &&
+            //         (angle_parallel <= 75);
+            return angle_parallel <= 75;
         }
         return false;
     }
@@ -588,17 +591,34 @@ public abstract class GestureWidget : Sensor
             HandJointUtils.TryGetJointPose(TrackedHandJoint.Wrist, hand, out var p1) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, hand, out var p2)
         )
-        { 
-            Vector3 vec = camera.WorldToViewportPoint(p2.Position) - camera.WorldToViewportPoint(p1.Position);
-            Debug.Log("Wave Left:  " + vec.ToString());
-            Vector3 up = new Vector3( 0, 1, 0 ); // up directions
+        {
+            if(p1.y < camera.localPosition.y - 0.3) return false;
+            Vector3 tmp = camera.WorldToViewportPoint(p2.Position) - camera.WorldToViewportPoint(p1.Position);
+            Vector3 vec = (tmp.x, tmp.y, 0);
+            Debug.Log("Wave Right:  " + vec.ToString());
+            Vector3 up = new Vector3( 0, 1, 0 ); // up direction
             Vector3 parallel = new Vector3( -1, 0, 0 );
-            float angle_up = Vector3.Angle(vec, up);
+            // float angle_up = Vector3.Angle(vec, up);
             float angle_parallel = Vector3.Angle(vec, parallel);
-            Debug.Log("Wave Left angle_up:  " + angle_up.ToString());
-            Debug.Log("Wave Left angle_parallel:  " + angle_parallel.ToString());
-            return (angle_up >= 45 && angle_up <= 135) &&
-                    (angle_parallel <= 75);
+            // Debug.Log("Wave Right angle_up:  " + angle_up.ToString());
+            Debug.Log("Wave Right angle_parallel:  " + angle_parallel.ToString());
+            // return (angle_up >= 45 && angle_up <= 135) &&
+            //         (angle_parallel <= 75);
+            return angle_parallel <= 75;
+        }
+        return false;
+    }
+
+    protected bool IsTouchingThree(Handedness hand_left, Handedness hand_right)
+    {
+        if (!(IsFive(hand_left))) return false;
+        if (
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_left, out var p1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
+        )
+        {
+            Vector3 vec = p2.position - p1.position;
+            if(vec.sqrMagnitude <= 0.1) return true;
         }
         return false;
     }
