@@ -27,6 +27,7 @@ public class Transformer : MonoBehaviour
         if (is_moving)
         {
             Vector3 delta = new Vector3(_move_x, _move_y, _move_z);
+            Debug.Log("Move:"+delta.ToString());
             gameObject.transform.localPosition = gameObject.transform.localPosition + delta;
         }
     }
@@ -75,7 +76,7 @@ public class Transformer : MonoBehaviour
 
     public void CancelMove()
     {
-        _move_x = _move_x = _move_z = 0;
+        _move_x = _move_y = _move_z = 0;
         is_moving = false;
     }
 }

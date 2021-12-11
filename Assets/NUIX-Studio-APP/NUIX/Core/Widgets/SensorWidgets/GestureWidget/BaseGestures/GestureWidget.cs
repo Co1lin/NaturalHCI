@@ -330,9 +330,9 @@ public abstract class GestureWidget : Sensor
             HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, hand, out var p3)
         )
         {
-            Debug.Log("FUCK 1:"+(p2.Position-p1.Position).sqrMagnitude.ToString());
-            Debug.Log("FUCK 2:"+(p3.Position-p1.Position).sqrMagnitude.ToString());
-            Debug.Log("FUCK 3:"+(p3.Position-p2.Position).sqrMagnitude.ToString());
+            Debug.Log("DEBUG SEVEN 1:"+(p2.Position-p1.Position).sqrMagnitude.ToString());
+            Debug.Log("DEBUG SEVEN 2:"+(p3.Position-p1.Position).sqrMagnitude.ToString());
+            Debug.Log("DEBUG SEVEN 3:"+(p3.Position-p2.Position).sqrMagnitude.ToString());
             return (p2.Position-p1.Position).sqrMagnitude <= 0.0008
                 && (p3.Position-p1.Position).sqrMagnitude <= 0.0008
                 && !IsThumbGrabbing(hand) && !IsIndexGrabbing(hand) && !IsMiddleGrabbing(hand);
@@ -406,7 +406,78 @@ public abstract class GestureWidget : Sensor
             Vector3 vec = p2.Position - p1.Position;
             Vector3 relative = new Vector3( 0, 1, 0 ); // up direction
             float angle = Vector3.Angle(vec, relative);
-            return angle <= 45;
+            return angle <= 30;
+        }
+        return false;
+    }
+
+    protected bool IsThumbDown(Handedness hand)
+    {
+        // if (!IsThumb(hand)) return false;
+        if (
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.ThumbMetacarpalJoint, hand, out var p1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.ThumbTip, hand, out var p2)
+        )
+        {
+            Vector3 vec = p2.Position - p1.Position;
+            Vector3 relative = new Vector3( 0, -1, 0 ); // up direction
+            float angle = Vector3.Angle(vec, relative);
+            return angle <= 50;
+        }
+        return false;
+    }
+
+    protected bool IsThumbLeft(Handedness hand) {
+        if (!IsThumb(hand)) return false;
+        if (
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, hand, out var q1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexKnuckle, hand, out var q2) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.RingKnuckle, hand, out var q3)
+        )
+        {
+            Vector3 norm = Vector3.Cross(q2.Position - q1.Position, q3.Position - q1.Position).normalized;
+            Vector3 relative = new Vector3( 0, 1, 0 ); // up direction
+            float angle = Vector3.Angle(norm, relative);
+            return angle <= 40;
+        }
+        return false;
+    }
+
+    protected bool IsThumbRight(Handedness hand) {
+        if (!IsThumb(hand)) return false;
+        if (
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, hand, out var q1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexKnuckle, hand, out var q2) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.RingKnuckle, hand, out var q3)
+        )
+        {
+            Vector3 norm = Vector3.Cross(q2.Position - q1.Position, q3.Position - q1.Position).normalized;
+            Vector3 relative = new Vector3( 0, -1, 0 ); // up direction
+            float angle = Vector3.Angle(norm, relative);
+            return angle <= 50;
+        }
+        return false;
+    }
+
+    // =================================
+
+    protected bool IsFiveClose(Handedness hand) {
+        if (
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.ThumbTip, hand, out var p1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand, out var p2) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, hand, out var p3) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.RingTip, hand, out var p4) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.PinkyTip, hand, out var p5)
+        )
+        {
+            // Debug.Log("Five Close 1:  "+(p2.Position - p1.Position).sqrMagnitude.ToString());
+            // Debug.Log("Five Close 2:  "+(p3.Position - p2.Position).sqrMagnitude.ToString());
+            // Debug.Log("Five Close 3:  "+(p4.Position - p3.Position).sqrMagnitude.ToString());
+            // Debug.Log("Five Close 4:  "+(p5.Position - p4.Position).sqrMagnitude.ToString());
+            return (p2.Position-p1.Position).sqrMagnitude <= 0.002
+                && (p3.Position-p2.Position).sqrMagnitude <= 0.002
+                && (p4.Position-p3.Position).sqrMagnitude <= 0.002
+                && (p5.Position-p4.Position).sqrMagnitude <= 0.005;
         }
         return false;
     }
