@@ -4,6 +4,6 @@ public class GestureKeyboardOne : GestureWidget
 {
     public override bool GestureCondition()
     {
-        return IsKeyboardOne(_handedness_left, _handedness_right);
+        return IsKeyboard(1, _handedness_right);
     }
 }

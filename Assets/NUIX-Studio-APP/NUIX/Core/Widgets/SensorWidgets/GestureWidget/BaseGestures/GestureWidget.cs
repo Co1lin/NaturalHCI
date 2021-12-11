@@ -613,139 +613,40 @@ public abstract class GestureWidget : Sensor
     
     // ================================================================
 
-    protected bool IsKeyboardOne(Handedness hand_left, Handedness hand_right)
+    protected bool IsKeyboard(int expected, Handedness hand)
     {
         if (keyboardGrid == null) return false;
         if (
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand, out var p2)
         )
         {
-            Vector3 vec = p2.Position - keyboardGrid[1];
-            return keyboardActive(vec.sqrMagnitude);
-        }
-        return false;
-    }
-    
-    protected bool IsKeyboardTwo(Handedness hand_left, Handedness hand_right)
-    {
-        if (keyboardGrid == null) return false;
-        if (
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
-        )
-        {
-            Vector3 vec = p2.Position - keyboardGrid[2];
-            return keyboardActive(vec.sqrMagnitude);
+            return keyboardCheck(expected, p2.Position);
         }
         return false;
     }
 
-    protected bool IsKeyboardThree(Handedness hand_left, Handedness hand_right)
-    {
-        if (keyboardGrid == null) return false;
-        if (
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
-        )
-        {
-            Vector3 vec = p2.Position - keyboardGrid[3];
-            return keyboardActive(vec.sqrMagnitude);
-        }
-        return false;
-    }
+    private bool keyboardCheck(int expected, Vector3 pos) {
+        pos = pos - keyboardGrid[0];
+        float dx = keyboardGrid[1].sqrMagnitude;
+        float dy = keyboardGrid[2].sqrMagnitude;
+        float x = Vector3.Dot(pos, keyboardGrid[1]) / dx;
+        float y = Vector3.Dot(pos, keyboardGrid[2]) / dy;
+        Debug.Log("Keyboard Check: expected: " + expected + " x: " + x + " y: " + y);
+        float scale = 0.5f;
+        int predict = -1;
+        if (y < -scale) predict = -1;
+        else {
+            int px, py;
+            if (x < -scale) px = 0;
+            else if (x > scale) px = 2;
+            else px = 1;
+            if (y < scale) py = 2;
+            else if (y > 2 * scale) py = 0;
+            else py = 1;
 
-    protected bool IsKeyboardFour(Handedness hand_left, Handedness hand_right)
-    {
-        if (keyboardGrid == null) return false;
-        if (
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
-        )
-        {
-            Vector3 vec = p2.Position - keyboardGrid[4];
-            return keyboardActive(vec.sqrMagnitude);
+            predict = py * 3 + px + 1;
         }
-        return false;
-    }
-
-    protected bool IsKeyboardFive(Handedness hand_left, Handedness hand_right)
-    {
-        if (keyboardGrid == null) return false;
-        if (
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
-        )
-        {
-            Vector3 vec = p2.Position - keyboardGrid[5];
-            return keyboardActive(vec.sqrMagnitude);
-        }
-        return false;
-    }
-
-    protected bool IsKeyboardSix(Handedness hand_left, Handedness hand_right)
-    {
-        if (keyboardGrid == null) return false;
-        if (
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
-        )
-        {
-            Vector3 vec = p2.Position - keyboardGrid[6];
-            return keyboardActive(vec.sqrMagnitude);
-        }
-        return false;
-    }
-
-    protected bool IsKeyboardSeven(Handedness hand_left, Handedness hand_right)
-    {
-        if (keyboardGrid == null) return false;
-        if (
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
-        )
-        {
-            Vector3 vec = p2.Position - keyboardGrid[7];
-            return keyboardActive(vec.sqrMagnitude);
-        }
-        return false;
-    }
-
-    protected bool IsKeyboardEight(Handedness hand_left, Handedness hand_right)
-    {
-        if (keyboardGrid == null) return false;
-        if (
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
-        )
-        {
-            Vector3 vec = p2.Position - keyboardGrid[8];
-            return keyboardActive(vec.sqrMagnitude);
-        }
-        return false;
-    }
-
-    protected bool IsKeyboardNine(Handedness hand_left, Handedness hand_right)
-    {
-        if (keyboardGrid == null) return false;
-        if (
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
-        )
-        {
-            Vector3 vec = p2.Position - keyboardGrid[9];
-            return keyboardActive(vec.sqrMagnitude);
-        }
-        return false;
-    }
-
-    protected bool IsKeyboardZero(Handedness hand_left, Handedness hand_right)
-    {
-        if (keyboardGrid == null) return false;
-        if (
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
-        )
-        {
-            Vector3 vec = p2.Position - keyboardGrid[0];
-            return keyboardActive(vec.sqrMagnitude);
-        }
-        return false;
-    }
-
-    private bool keyboardActive(float dis) {
-        Debug.Log("Grid Record compare: "+dis.ToString());
-        if (dis <= .01) {
+        if (predict == expected) {
             keyboardActiveTime = Time.time;
             return true;
         }
@@ -753,25 +654,18 @@ public abstract class GestureWidget : Sensor
     }
 
     protected void FillKeyboardGrid() {
-        keyboardGrid = new Vector3[10];
+        keyboardGrid = new Vector3[3];
         HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, _handedness_left, out var p0);
         HandJointUtils.TryGetJointPose(TrackedHandJoint.RingTip, _handedness_left, out var p1);
         HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, _handedness_left, out var p2);
         HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, _handedness_left, out var p3);
         
-        Vector3 ver = p2.Position - p0.Position;
-        Vector3 hor = 2 * (p3.Position - p1.Position);
         Vector3 cen = p0.Position;
-        keyboardGrid[1] = cen + ver - hor;
-        keyboardGrid[2] = cen + ver      ;
-        keyboardGrid[3] = cen + ver + hor;
-        keyboardGrid[4] = cen       - hor;
-        keyboardGrid[5] = cen            ;
-        keyboardGrid[6] = cen       + hor;
-        keyboardGrid[7] = cen - ver - hor;
-        keyboardGrid[8] = cen - ver      ;
-        keyboardGrid[9] = cen - ver + hor;
-        keyboardGrid[0] = cen - ver - ver;
+        Vector3 hor = 2 * (p3.Position - p1.Position);
+        Vector3 ver = p2.Position - p0.Position;
+        keyboardGrid[0] = cen;
+        keyboardGrid[1] = hor;
+        keyboardGrid[2] = ver;
         keyboardActiveTime = Time.time;
     }
 }
