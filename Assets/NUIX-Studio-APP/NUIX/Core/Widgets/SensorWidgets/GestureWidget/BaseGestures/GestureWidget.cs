@@ -481,12 +481,12 @@ public abstract class GestureWidget : Sensor
     {
         if (!IsFive(hand)) return false;
         if (
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, hand, out var p1) &&
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.Wrist, hand, out var p2)
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.Wrist, hand, out var p1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, hand, out var p2)
         )
-        {
+        { 
             Vector3 vec = camera.WorldToViewportPoint(p2.Position) - camera.WorldToViewportPoint(p1.Position);
-            Vector3 up = new Vector3( 0, 1, 0 ); // up direction
+            Vector3 up = new Vector3( 0, 1, 0 ); // up directions
             Vector3 parallel = new Vector3( -1, 0, 0 );
             float angle_up = Vector3.Angle(vec, up);
             float angle_parallel = Vector3.Angle(vec, parallel);
