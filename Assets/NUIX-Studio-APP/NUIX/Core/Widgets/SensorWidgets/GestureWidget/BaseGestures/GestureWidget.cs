@@ -496,17 +496,46 @@ public abstract class GestureWidget : Sensor
         return false;
     }
 
-    protected bool IsTheForce(Handedness hand, Transform target)
+    protected bool IsTheForceUp(Handedness hand, Transform target)
     {
         if (!IsFive(hand)) return false;
         if (
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, hand, out var p)
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, hand, out var p) && 
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, hand, out var q1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexKnuckle, hand, out var q2) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.RingKnuckle, hand, out var q3)
         )
         {
+            Debug.Log("The Force hand:" + p.Position.ToString());
+            Debug.Log("The Force target:" + target.localPosition.ToString());
+            Vector3 norm = Vector3.Cross(q2.Position - q1.Position, q3.Position - q1.Position).normalized;
             Vector3 vec = p.Position - target.localPosition;
             Vector3 relative = new Vector3(0, 1, 0); // up direction
-            float angle = Vector3.Angle(vec, relative);
-            return angle <= 30;
+            float angle_norm = Vector3.Angle(norm, relative);
+            float angle_pos = Vector3.Angle(vec, relative);
+            return angle_pos <= 30 && angle_norm >= 150;
+        }
+        return false;
+    }
+
+    protected bool IsTheForceDown(Handedness hand, Transform target)
+    {
+        if (!IsFive(hand)) return false;
+        if (
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, hand, out var p) && 
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, hand, out var q1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexKnuckle, hand, out var q2) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.RingKnuckle, hand, out var q3)
+        )
+        {
+            Debug.Log("The Force hand:" + p.Position.ToString());
+            Debug.Log("The Force target:" + target.localPosition.ToString());
+            Vector3 norm = Vector3.Cross(q2.Position - q1.Position, q3.Position - q1.Position).normalized;
+            Vector3 vec = p.Position - target.localPosition;
+            Vector3 relative = new Vector3(0, 1, 0); // up direction
+            float angle_norm = Vector3.Angle(norm, relative);
+            float angle_pos = Vector3.Angle(vec, relative);
+            return angle_pos <= 30 && angle_norm <= 30;
         }
         return false;
     }
@@ -547,7 +576,7 @@ public abstract class GestureWidget : Sensor
             Debug.Log("Wave Right angle_up:  " + angle_up.ToString());
             Debug.Log("Wave Right angle_parallel:  " + angle_parallel.ToString());
             return (angle_up >= 45 && angle_up <= 135) &&
-                    (angle_parallel <= 45);
+                    (angle_parallel <= 75);
         }
         return false;
     }
@@ -569,7 +598,7 @@ public abstract class GestureWidget : Sensor
             Debug.Log("Wave Left angle_up:  " + angle_up.ToString());
             Debug.Log("Wave Left angle_parallel:  " + angle_parallel.ToString());
             return (angle_up >= 45 && angle_up <= 135) &&
-                    (angle_parallel <= 45);
+                    (angle_parallel <= 75);
         }
         return false;
     }

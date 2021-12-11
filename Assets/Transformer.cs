@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Transformer : MonoBehaviour
 {
@@ -22,7 +23,12 @@ public class Transformer : MonoBehaviour
         if (is_scaling)
         {
             Vector3 delta = new Vector3(_scale_x, _scale_y, _scale_z);
-            gameObject.transform.localScale = gameObject.transform.localScale + delta;
+            Debug.Log("transformer Scale"+ gameObject.transform.localScale.ToString());
+            // float scale = Math.Max(gameObject.transform.localScale.x, Math.Max(gameObject.transform.localScale.y, gameObject.transform.localScale.z));
+            Vector3 tmp = gameObject.transform.localScale + delta;
+            if (tmp.y < 0.4) tmp.y = 0.4f;
+            else if (tmp.y > 0.7) tmp.y = 0.7f;
+            gameObject.transform.localScale = tmp;
         }
         if (is_moving)
         {

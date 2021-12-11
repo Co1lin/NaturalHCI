@@ -298,7 +298,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 54267596}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8de919ee1a2fd474c8f59212e064b6c9, type: 3}
   m_Name: 
@@ -956,18 +956,6 @@ MonoBehaviour:
   m_OnSensorTriggered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1618262193}
-        m_TargetAssemblyTypeName: Transformer, Assembly-CSharp
-        m_MethodName: MoveY
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0.005
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1110977785}
         m_TargetAssemblyTypeName: Screen_Render, Assembly-CSharp
         m_MethodName: BrightnessUp
@@ -983,25 +971,13 @@ MonoBehaviour:
   m_OnSensorUntriggered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1618262193}
-        m_TargetAssemblyTypeName: Transformer, Assembly-CSharp
-        m_MethodName: CancelMove
+      - m_Target: {fileID: 1110977785}
+        m_TargetAssemblyTypeName: Screen_Render, Assembly-CSharp
+        m_MethodName: CancelBrightness
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1276819789}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 36e555a3b848ed844a6774ec59b878d2, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1056,18 +1032,6 @@ MonoBehaviour:
   m_OnSensorTriggered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1618262193}
-        m_TargetAssemblyTypeName: Transformer, Assembly-CSharp
-        m_MethodName: MoveX
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0.005
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1276819789}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: PlayOneShot
@@ -1082,31 +1046,7 @@ MonoBehaviour:
         m_CallState: 2
   m_OnSensorUntriggered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1618262193}
-        m_TargetAssemblyTypeName: Transformer, Assembly-CSharp
-        m_MethodName: CancelMove
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1110977785}
-        m_TargetAssemblyTypeName: Screen_Render, Assembly-CSharp
-        m_MethodName: CancelBrightness
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _target: {fileID: 0}
   _camera: {fileID: 0}
 --- !u!1001 &336169825
@@ -1413,7 +1353,7 @@ GameObject:
   - component: {fileID: 364075608}
   - component: {fileID: 364075607}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GestureWaveToLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1451,7 +1391,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 1340d7fb0cd1bfb4caa3b3270cb2ea5f, type: 3}
+          m_ObjectArgument: {fileID: 8300000, guid: e4154763f07adb7418e874d20d0bfc37, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -1482,13 +1422,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 364075606}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.68796426, y: 1.2217617, z: 1.4152559}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.2871966, y: -0.15571666, z: -1.3443393}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 1740164844}
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &374233803 stripped
 Transform:
@@ -1534,7 +1474,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 415561401}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf7a4e481a6ca42b3a1b94004d3fc800, type: 3}
   m_Name: 
@@ -1656,7 +1596,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 447565202}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71f82b642f9d64e8891e638659545b4b, type: 3}
   m_Name: 
@@ -1857,18 +1797,6 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 8300000, guid: 36e555a3b848ed844a6774ec59b878d2, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 713520425}
-        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
-        m_MethodName: set_receiveShadows
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3240,7 +3168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4140755081902108, guid: 4691ea9de436d9e44ac6e19888395fb6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.9460025
+      value: 2.946
       objectReference: {fileID: 0}
     - target: {fileID: 4140755081902108, guid: 4691ea9de436d9e44ac6e19888395fb6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3248,7 +3176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4140755081902108, guid: 4691ea9de436d9e44ac6e19888395fb6, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.195904
+      value: 2.085
       objectReference: {fileID: 0}
     - target: {fileID: 4140755081902108, guid: 4691ea9de436d9e44ac6e19888395fb6, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6393,18 +6321,6 @@ MonoBehaviour:
   m_OnSensorTriggered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1618262193}
-        m_TargetAssemblyTypeName: Transformer, Assembly-CSharp
-        m_MethodName: MoveX
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: -0.005
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1276819789}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: PlayOneShot
@@ -6419,19 +6335,7 @@ MonoBehaviour:
         m_CallState: 2
   m_OnSensorUntriggered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1618262193}
-        m_TargetAssemblyTypeName: Transformer, Assembly-CSharp
-        m_MethodName: CancelMove
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   _target: {fileID: 0}
   _camera: {fileID: 0}
 --- !u!1001 &1526774187
@@ -7623,6 +7527,8 @@ Transform:
   - {fileID: 1487777216}
   - {fileID: 324257059}
   - {fileID: 415561402}
+  - {fileID: 364075608}
+  - {fileID: 2020598105}
   m_Father: {fileID: 627652287}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8058,6 +7964,82 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2efbcc1bdf0f24034ba8c05a6c27a4dd, type: 3}
+--- !u!1 &2020598104
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2020598105}
+  - component: {fileID: 2020598106}
+  m_Layer: 0
+  m_Name: GestureTheForceDown
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2020598105
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020598104}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1740164844}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2020598106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020598104}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a81db65507c0f4f88b3b502a545adda6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OnSensorTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1333929448}
+        m_TargetAssemblyTypeName: Transformer, Assembly-CSharp
+        m_MethodName: ScaleY
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -0.005
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_OnSensorUntriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1333929448}
+        m_TargetAssemblyTypeName: Transformer, Assembly-CSharp
+        m_MethodName: CancelScale
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _target: {fileID: 1333929447}
+  _camera: {fileID: 0}
 --- !u!1001 &2022528168
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8261,25 +8243,13 @@ MonoBehaviour:
   m_OnSensorTriggered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1618262193}
-        m_TargetAssemblyTypeName: Transformer, Assembly-CSharp
-        m_MethodName: MoveY
-        m_Mode: 4
+      - m_Target: {fileID: 1110977785}
+        m_TargetAssemblyTypeName: Screen_Render, Assembly-CSharp
+        m_MethodName: BrightnessDown
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: -0.005
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1276819789}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 6bb977d2eec33d34e9d4683d95a325da, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -8288,9 +8258,9 @@ MonoBehaviour:
   m_OnSensorUntriggered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1618262193}
-        m_TargetAssemblyTypeName: Transformer, Assembly-CSharp
-        m_MethodName: CancelMove
+      - m_Target: {fileID: 1110977785}
+        m_TargetAssemblyTypeName: Screen_Render, Assembly-CSharp
+        m_MethodName: CancelBrightness
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -8529,7 +8499,7 @@ GameObject:
   - component: {fileID: 2145632423}
   - component: {fileID: 2145632424}
   m_Layer: 0
-  m_Name: GestureTheForce
+  m_Name: GestureTheForceUp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8559,7 +8529,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2145632422}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 214794d33b12840cf9ad9bd913b69046, type: 3}
+  m_Script: {fileID: 11500000, guid: dfbdee054a7334ddb9646f219f50cf24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_OnSensorTriggered:

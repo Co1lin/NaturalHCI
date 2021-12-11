@@ -1,9 +1,9 @@
 using Microsoft.MixedReality.Toolkit.Utilities;
 
-public class GestureTheForce : GestureWidget
+public class GestureTheForceDown : GestureWidget
 {
     public override bool GestureCondition()
     {
-        return IsTheForce(_handedness_right, _target);
+        return IsTheForceDown(_handedness_right, _target);
     }
 }

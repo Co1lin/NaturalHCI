@@ -34,19 +34,19 @@ public class Screen_Render : MonoBehaviour
 
     void Update() {
         count += 1;
-        if(count > 10) {
+        if(count > 5) {
             count = 0;
             if(brightness_uping) {
                 Color emission = meshRenderer.material.GetColor("_EmissionColor");
                 if(emission.r < 0.7) {
-                    emission.r = emission.g = emission.b = emission.r + 0.03f;
+                    emission.r = emission.g = emission.b = emission.r + 0.015f;
                     meshRenderer.material.SetColor("_EmissionColor", emission);
                 }
             }
             if(brightness_downing) {
                 Color emission = meshRenderer.material.GetColor("_EmissionColor");
-                if(emission.r > 0.1) {
-                    emission.r = emission.g = emission.b = emission.r - 0.03f;
+                if(emission.r > 0.05) {
+                    emission.r = emission.g = emission.b = emission.r - 0.015f;
                     meshRenderer.material.SetColor("_EmissionColor", emission);
                 }
             }
