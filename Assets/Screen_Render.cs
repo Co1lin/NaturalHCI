@@ -11,14 +11,9 @@ public class Screen_Render : MonoBehaviour
         meshRenderer.material = channels[num - 1];      
     }
 
-    void Load_Sources(){
-        screenSaver = Resources.Load<Material>("Materials/ScreenSaver");
-        channels[0] = Resources.Load<Material>("Materials/CCTV1");
-    }
     void Start()
     {
         meshRenderer = GetComponent<MeshRenderer>();
-        Load_Sources();
     }
 
     // void Update()

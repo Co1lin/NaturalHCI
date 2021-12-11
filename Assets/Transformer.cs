@@ -27,7 +27,6 @@ public class Transformer : MonoBehaviour
         if (is_moving)
         {
             Vector3 delta = new Vector3(_move_x, _move_y, _move_z);
-            Debug.Log(gameObject.transform.localPosition);
             gameObject.transform.localPosition = gameObject.transform.localPosition + delta;
         }
     }
