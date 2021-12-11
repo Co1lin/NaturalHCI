@@ -5,15 +5,57 @@ public class Screen_Render : MonoBehaviour
 {
     public MeshRenderer meshRenderer;
     public Material[] channels;
-    public Material screenSaver;
-    public void To_Channel(int num)
-    {
-        meshRenderer.material = channels[num - 1];      
+    public Material screen_saver;
+    int count;
+    bool brightness_uping;
+    bool brightness_downing;
+    void ChangeScreen(Material new_screen) {
+        Color emission = meshRenderer.material.GetColor("_EmissionColor");
+        meshRenderer.material = new_screen;
+        meshRenderer.material.SetColor("_EmissionColor", emission);
+    }
+    public void ToChannel(int num) {
+        ChangeScreen(channels[num - 1]);
     }
 
-    void Start()
-    {
-        meshRenderer = GetComponent<MeshRenderer>();
+    public void ToScreenSaver() {
+        ChangeScreen(screen_saver);
+    }
+    public void BrightnessUp() {
+        brightness_uping = true;
+    }
+    public void BrightnessDown() {
+        brightness_downing = true;
+    }
+
+    public void CancelBrightness() {
+        brightness_uping = brightness_downing = false;
+    }
+
+    void Update() {
+        count += 1;
+        if(count > 10) {
+            count = 0;
+            if(brightness_uping) {
+                Color emission = meshRenderer.material.GetColor("_EmissionColor");
+                if(emission.r < 0.7) {
+                    emission.r = emission.g = emission.b = emission.r + 0.03f;
+                    meshRenderer.material.SetColor("_EmissionColor", emission);
+                }
+            }
+            if(brightness_downing) {
+                Color emission = meshRenderer.material.GetColor("_EmissionColor");
+                if(emission.r > 0.1) {
+                    emission.r = emission.g = emission.b = emission.r - 0.03f;
+                    meshRenderer.material.SetColor("_EmissionColor", emission);
+                }
+            }
+        }
+    }
+    void Start() {   
+        count = 0;
+        brightness_uping = false;
+        brightness_downing = false;
     }
 
     // void Update()
