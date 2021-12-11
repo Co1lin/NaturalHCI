@@ -799,6 +799,58 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0525b7ad910d145f9a39a0da3b697815, type: 3}
+--- !u!1 &178229960
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 178229961}
+  - component: {fileID: 178229962}
+  m_Layer: 0
+  m_Name: KeyboardRecord
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &178229961
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178229960}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1740164844}
+  m_RootOrder: 30
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &178229962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 178229960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f5b228ae613b4f57b3d187b0b690112, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OnSensorTriggered:
+    m_PersistentCalls:
+      m_Calls: []
+  m_OnSensorUntriggered:
+    m_PersistentCalls:
+      m_Calls: []
+  _target: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!1001 &203330299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1037,7 +1089,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 36e555a3b848ed844a6774ec59b878d2, type: 3}
+          m_ObjectArgument: {fileID: 8300000, guid: 1e3cd518fc252894f8dcede422f1792f, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -2594,7 +2646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 463348, guid: 04d63afcff91b445cb64ce94fc722f6d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.678
+      value: -0.556
       objectReference: {fileID: 0}
     - target: {fileID: 463348, guid: 04d63afcff91b445cb64ce94fc722f6d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3420,7 +3472,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: b8c73329dfc0a344a8461642b241c30d, type: 3}
+          m_ObjectArgument: {fileID: 8300000, guid: 5ad4c6b5880452d4a813c8714b5d4338, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4440,7 +4492,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: dbaf577a8176a8a49aeee479ce6fba46, type: 3}
+          m_ObjectArgument: {fileID: 8300000, guid: 6bb977d2eec33d34e9d4683d95a325da, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4541,7 +4593,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 6bb977d2eec33d34e9d4683d95a325da, type: 3}
+          m_ObjectArgument: {fileID: 8300000, guid: 577b302235decc047a09254a91858236, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4861,7 +4913,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: e4154763f07adb7418e874d20d0bfc37, type: 3}
+          m_ObjectArgument: {fileID: 8300000, guid: dbaf577a8176a8a49aeee479ce6fba46, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -4956,7 +5008,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 0008aa109f6a9f34b9658d73a0c38e74, type: 3}
+          m_ObjectArgument: {fileID: 8300000, guid: c376d65467e4f844ba94a19350918427, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -5337,7 +5389,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 1e3cd518fc252894f8dcede422f1792f, type: 3}
+          m_ObjectArgument: {fileID: 8300000, guid: 36e555a3b848ed844a6774ec59b878d2, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -5653,7 +5705,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 5ad4c6b5880452d4a813c8714b5d4338, type: 3}
+          m_ObjectArgument: {fileID: 8300000, guid: 1e3cd518fc252894f8dcede422f1792f, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -7056,7 +7108,7 @@ MonoBehaviour:
         m_MethodName: PlayOneShot
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 577b302235decc047a09254a91858236, type: 3}
+          m_ObjectArgument: {fileID: 8300000, guid: e4154763f07adb7418e874d20d0bfc37, type: 3}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
@@ -8103,6 +8155,7 @@ Transform:
   - {fileID: 1554700222}
   - {fileID: 846636188}
   - {fileID: 307426322}
+  - {fileID: 178229961}
   m_Father: {fileID: 627652287}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
