@@ -186,6 +186,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _target: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!1001 &12054344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -321,6 +322,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _target: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!4 &60830889 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 410276, guid: 751f193c0434849f995d247e088796cb, type: 3}
@@ -389,6 +391,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _target: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!1001 &77362880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -605,6 +608,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _target: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!1001 &129498544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -697,6 +701,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _target: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!1 &157526089
 GameObject:
   m_ObjectHideFlags: 0
@@ -874,6 +879,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _target: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!4 &218487098 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 413192, guid: aa8f027e7f20b41ebb921f8d8003a776, type: 3}
@@ -978,6 +984,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _target: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!1 &324257058
 GameObject:
   m_ObjectHideFlags: 0
@@ -1065,6 +1072,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _target: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!1001 &336169825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1358,6 +1366,94 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &364075606
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 364075608}
+  - component: {fileID: 364075607}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &364075607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364075606}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdcfbd1eb842144f1877d80dc8f5e67e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OnSensorTriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1618262193}
+        m_TargetAssemblyTypeName: Transformer, Assembly-CSharp
+        m_MethodName: MoveY
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -0.005
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1276819789}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: PlayOneShot
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 8300000, guid: 1340d7fb0cd1bfb4caa3b3270cb2ea5f, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_OnSensorUntriggered:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1618262193}
+        m_TargetAssemblyTypeName: Transformer, Assembly-CSharp
+        m_MethodName: CancelMove
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _target: {fileID: 0}
+  _camera: {fileID: 1087739261}
+--- !u!4 &364075608
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364075606}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.68796426, y: 1.2217617, z: 1.4152559}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &374233803 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 445724, guid: 30f5ed3e90f884c0ba8ae40f4545e4df, type: 3}
@@ -1422,18 +1518,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1276819789}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 1340d7fb0cd1bfb4caa3b3270cb2ea5f, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
   m_OnSensorUntriggered:
     m_PersistentCalls:
       m_Calls:
@@ -1450,6 +1534,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _target: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!1001 &418301913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1571,6 +1656,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _target: {fileID: 1087739256}
+  _camera: {fileID: 0}
 --- !u!1 &457375080
 GameObject:
   m_ObjectHideFlags: 0
@@ -1634,6 +1720,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _target: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!1001 &458150582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1743,6 +1830,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _target: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!1 &463137976
 GameObject:
   m_ObjectHideFlags: 0
@@ -3232,6 +3320,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _target: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!1 &904169751
 GameObject:
   m_ObjectHideFlags: 0
@@ -4123,6 +4212,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _target: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!1 &1069835619
 GameObject:
   m_ObjectHideFlags: 0
@@ -6136,6 +6226,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _target: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!1001 &1526774187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6474,6 +6565,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _target: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!1 &1615678731
 GameObject:
   m_ObjectHideFlags: 0
@@ -7998,6 +8090,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _target: {fileID: 0}
+  _camera: {fileID: 0}
 --- !u!1 &2067820805
 GameObject:
   m_ObjectHideFlags: 0
@@ -8289,6 +8382,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   _target: {fileID: 1333929447}
+  _camera: {fileID: 0}
 --- !u!1001 &2146471327
 PrefabInstance:
   m_ObjectHideFlags: 0
