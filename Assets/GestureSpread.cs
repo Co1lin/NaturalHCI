@@ -15,7 +15,6 @@ public class GestureSpread : GestureWidget
         }
         else if (IsFive(_handedness_right)) {
             if (prev && Time.time - prev_time < 4f) {
-                Debug.Log("success");
                 prev_time = Time.time;
                 return true;
             }
