@@ -567,9 +567,9 @@ public abstract class GestureWidget : Sensor
             HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, hand, out var p2)
         )
         {
-            if(p1.y < camera.localPosition.y - 0.3) return false;
+            if(p1.Position.y < camera.transform.localPosition.y - 0.3) return false;
             Vector3 tmp = camera.WorldToViewportPoint(p2.Position) - camera.WorldToViewportPoint(p1.Position);
-            Vector3 vec = (tmp.x, tmp.y, 0);
+            Vector3 vec = new Vector3(tmp.x, tmp.y, 0);
             Debug.Log("Wave Right:  " + vec.ToString());
             Vector3 up = new Vector3( 0, 1, 0 ); // up direction
             Vector3 parallel = new Vector3( 1, 0, 0 );
@@ -592,9 +592,9 @@ public abstract class GestureWidget : Sensor
             HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, hand, out var p2)
         )
         {
-            if(p1.y < camera.localPosition.y - 0.3) return false;
+            if(p1.Position.y < camera.transform.localPosition.y - 0.3) return false;
             Vector3 tmp = camera.WorldToViewportPoint(p2.Position) - camera.WorldToViewportPoint(p1.Position);
-            Vector3 vec = (tmp.x, tmp.y, 0);
+            Vector3 vec = new Vector3(tmp.x, tmp.y, 0);
             Debug.Log("Wave Right:  " + vec.ToString());
             Vector3 up = new Vector3( 0, 1, 0 ); // up direction
             Vector3 parallel = new Vector3( -1, 0, 0 );
@@ -608,8 +608,38 @@ public abstract class GestureWidget : Sensor
         }
         return false;
     }
+    
+    // ================================================================
 
-    protected bool IsTouchingThree(Handedness hand_left, Handedness hand_right)
+    protected bool IsKeyboardOne(Handedness hand_left, Handedness hand_right)
+    {
+        if (!(IsFive(hand_left))) return false;
+        if (
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.RingTip, hand_left, out var p1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
+        )
+        {
+            Vector3 vec = p2.Position - p1.Position;
+            if(vec.sqrMagnitude <= 0.002) return true;
+        }
+        return false;
+    }
+    
+    protected bool IsKeyboardTwo(Handedness hand_left, Handedness hand_right)
+    {
+        if (!(IsFive(hand_left))) return false;
+        if (
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, hand_left, out var p1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
+        )
+        {
+            Vector3 vec = p2.Position - p1.Position;
+            if(vec.sqrMagnitude <= 0.002) return true;
+        }
+        return false;
+    }
+
+    protected bool IsKeyboardThree(Handedness hand_left, Handedness hand_right)
     {
         if (!(IsFive(hand_left))) return false;
         if (
@@ -617,8 +647,106 @@ public abstract class GestureWidget : Sensor
             HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
         )
         {
-            Vector3 vec = p2.position - p1.position;
-            if(vec.sqrMagnitude <= 0.1) return true;
+            Vector3 vec = p2.Position - p1.Position;
+            if(vec.sqrMagnitude <= 0.002) return true;
+        }
+        return false;
+    }
+
+    protected bool IsKeyboardFour(Handedness hand_left, Handedness hand_right)
+    {
+        if (!(IsFive(hand_left))) return false;
+        if (
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.RingDistalJoint, hand_left, out var p1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
+        )
+        {
+            Vector3 vec = p2.Position - p1.Position;
+            if(vec.sqrMagnitude <= 0.002) return true;
+        }
+        return false;
+    }
+
+    protected bool IsKeyboardFive(Handedness hand_left, Handedness hand_right)
+    {
+        if (!(IsFive(hand_left))) return false;
+        if (
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleDistalJoint, hand_left, out var p1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
+        )
+        {
+            Vector3 vec = p2.Position - p1.Position;
+            if(vec.sqrMagnitude <= 0.002) return true;
+        }
+        return false;
+    }
+
+    protected bool IsKeyboardSix(Handedness hand_left, Handedness hand_right)
+    {
+        if (!(IsFive(hand_left))) return false;
+        if (
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexDistalJoint, hand_left, out var p1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
+        )
+        {
+            Vector3 vec = p2.Position - p1.Position;
+            if(vec.sqrMagnitude <= 0.002) return true;
+        }
+        return false;
+    }
+
+    protected bool IsKeyboardSeven(Handedness hand_left, Handedness hand_right)
+    {
+        if (!(IsFive(hand_left))) return false;
+        if (
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.RingMiddleJoint, hand_left, out var p1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
+        )
+        {
+            Vector3 vec = p2.Position - p1.Position;
+            if(vec.sqrMagnitude <= 0.002) return true;
+        }
+        return false;
+    }
+
+    protected bool IsKeyboardEight(Handedness hand_left, Handedness hand_right)
+    {
+        if (!(IsFive(hand_left))) return false;
+        if (
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleMiddleJoint, hand_left, out var p1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
+        )
+        {
+            Vector3 vec = p2.Position - p1.Position;
+            if(vec.sqrMagnitude <= 0.002) return true;
+        }
+        return false;
+    }
+
+    protected bool IsKeyboardNine(Handedness hand_left, Handedness hand_right)
+    {
+        if (!(IsFive(hand_left))) return false;
+        if (
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexMiddleJoint, hand_left, out var p1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
+        )
+        {
+            Vector3 vec = p2.Position - p1.Position;
+            if(vec.sqrMagnitude <= 0.002) return true;
+        }
+        return false;
+    }
+
+    protected bool IsKeyboardZero(Handedness hand_left, Handedness hand_right)
+    {
+        if (!(IsFive(hand_left))) return false;
+        if (
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleKnuckle, hand_left, out var p1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand_right, out var p2)
+        )
+        {
+            Vector3 vec = p2.Position - p1.Position;
+            if(vec.sqrMagnitude <= 0.002) return true;
         }
         return false;
     }
