@@ -10,9 +10,11 @@ public class Screen_Render : MonoBehaviour
     bool brightness_uping;
     bool brightness_downing;
     void ChangeScreen(Material new_screen) {
-        Color emission = meshRenderer.material.GetColor("_EmissionColor");
-        meshRenderer.material = new_screen;
-        meshRenderer.material.SetColor("_EmissionColor", emission);
+        if (this.enabled) {
+            Color emission = meshRenderer.material.GetColor("_EmissionColor");
+            meshRenderer.material = new_screen;
+            meshRenderer.material.SetColor("_EmissionColor", emission);
+        }
     }
     public void ToChannel(int num) {
         ChangeScreen(channels[num - 1]);
