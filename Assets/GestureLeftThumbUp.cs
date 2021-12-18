@@ -8,7 +8,7 @@ public class GestureLeftThumbUp : GestureWidget
     {
         if (IsThumbUp(_handedness_left)) {
             _audioSource.volume += 0.005f;
-            Debug.Log("audio volume up: " + _audioSource.volume.ToString());
+            // Debug.Log("audio volume up: " + _audioSource.volume.ToString());
         }
         return false;
     }

@@ -549,6 +549,7 @@ public abstract class GestureWidget : Sensor
             HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, hand, out var p)
         )
         {
+            Debug.Log("hand Object: " + p.Position.ToString() + " touch Object: " + target.localPosition.ToString());
             Vector3 vec = p.Position - target.localPosition;
             return vec.sqrMagnitude <= 0.1;
         }
@@ -556,6 +557,7 @@ public abstract class GestureWidget : Sensor
             HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleMetacarpal, hand, out var p2)
         )
         {
+            Debug.Log("hand Object: " + p.Position.ToString() + " touch Object: " + target.localPosition.ToString());
             Vector3 vec = p2.Position - target.localPosition;
             return vec.sqrMagnitude <= 0.1;
         }
@@ -564,22 +566,22 @@ public abstract class GestureWidget : Sensor
 
     protected bool IsWaveRight(Handedness hand, Camera camera)
     {
-        if (!IsFive(hand)) return false;
+        // if (!IsFive(hand)) return false;
         if (
             HandJointUtils.TryGetJointPose(TrackedHandJoint.Wrist, hand, out var p1) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, hand, out var p2)
         )
         {
-            if(p1.Position.y < camera.transform.localPosition.y - 0.3) return false;
+            // if(p1.Position.y < camera.transform.localPosition.y - 0.3) return false;
             Vector3 tmp = camera.WorldToViewportPoint(p2.Position) - camera.WorldToViewportPoint(p1.Position);
-            Vector3 vec = new Vector3(tmp.x, tmp.y, 0);
+            Vector3 vec = new Vector3(0, tmp.y, tmp.z);
             // Debug.Log("Wave Right:  " + vec.ToString());
             Vector3 up = new Vector3( 0, 1, 0 ); // up direction
-            Vector3 parallel = new Vector3( 1, 0, 0 );
+            Vector3 parallel = new Vector3( 0, 0, -1 );
             // float angle_up = Vector3.Angle(vec, up);
             float angle_parallel = Vector3.Angle(vec, parallel);
             // Debug.Log("Wave Right angle_up:  " + angle_up.ToString());
-            // Debug.Log("Wave Right angle_parallel:  " + angle_parallel.ToString());
+            Debug.Log("Wave Right angle_parallel:  " + angle_parallel.ToString());
             // return (angle_up >= 45 && angle_up <= 135) &&
             //         (angle_parallel <= 75);
             return angle_parallel <= 75;
@@ -589,22 +591,22 @@ public abstract class GestureWidget : Sensor
 
     protected bool IsWaveLeft(Handedness hand, Camera camera)
     {
-        if (!IsFive(hand)) return false;
+        // if (!IsFive(hand)) return false;
         if (
             HandJointUtils.TryGetJointPose(TrackedHandJoint.Wrist, hand, out var p1) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, hand, out var p2)
         )
         {
-            if(p1.Position.y < camera.transform.localPosition.y - 0.3) return false;
+            // if(p1.Position.y < camera.transform.localPosition.y - 0.3) return false;
             Vector3 tmp = camera.WorldToViewportPoint(p2.Position) - camera.WorldToViewportPoint(p1.Position);
-            Vector3 vec = new Vector3(tmp.x, tmp.y, 0);
-            // Debug.Log("Wave Right:  " + vec.ToString());
+            Vector3 vec = new Vector3(0, tmp.y, tmp.z);
+            // Debug.Log("Wave Left:  " + vec.ToString());
             Vector3 up = new Vector3( 0, 1, 0 ); // up direction
-            Vector3 parallel = new Vector3( -1, 0, 0 );
+            Vector3 parallel = new Vector3( 0, 0, 1 );
             // float angle_up = Vector3.Angle(vec, up);
             float angle_parallel = Vector3.Angle(vec, parallel);
-            // Debug.Log("Wave Right angle_up:  " + angle_up.ToString());
-            // Debug.Log("Wave Right angle_parallel:  " + angle_parallel.ToString());
+            // Debug.Log("Wave Left angle_up:  " + angle_up.ToString());
+            Debug.Log("Wave Left angle_parallel:  " + angle_parallel.ToString());
             // return (angle_up >= 45 && angle_up <= 135) &&
             //         (angle_parallel <= 75);
             return angle_parallel <= 75;
@@ -627,6 +629,7 @@ public abstract class GestureWidget : Sensor
     }
 
     private bool keyboardCheck(int expected, Vector3 pos) {
+        if (keyboardGrid == null) return false;
         pos = pos - keyboardGrid[0];
         float dx = keyboardGrid[1].sqrMagnitude;
         float dy = keyboardGrid[2].sqrMagnitude;

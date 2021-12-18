@@ -8,7 +8,7 @@ public class GestureLeftThumbDown : GestureWidget
     {
         if (IsThumbDown(_handedness_left)) {
             _audioSource.volume -= 0.005f;
-            Debug.Log("audio volume down: " + _audioSource.volume.ToString());
+            // Debug.Log("audio volume down: " + _audioSource.volume.ToString());
         }
         return false;
     }

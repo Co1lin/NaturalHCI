@@ -21,8 +21,7 @@ public class Piano_Screen_Renderer : MonoBehaviour
         if(Time.time - activate_time < 1f)
             return;
         activate_time = Time.time;
-        if(cur_page < sheets.Length)
-            cur_page += 1;
+        cur_page = (cur_page + 1) % sheets.Length;
         ToPage(cur_page);
     }
 
@@ -30,8 +29,7 @@ public class Piano_Screen_Renderer : MonoBehaviour
         if(Time.time - activate_time < 1f)
             return;
         activate_time = Time.time;
-        if(cur_page > 0)   
-            cur_page -= 1;
+        cur_page = (cur_page - 1 + sheets.Length) % sheets.Length;
         ToPage(cur_page);
     }
 
