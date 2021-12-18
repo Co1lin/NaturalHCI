@@ -5,8 +5,9 @@ public class GestureKeyboardRecord : GestureWidget
 {
     public override bool GestureCondition()
     {
-        if (keyboardGrid == null && IsFive(_handedness_left)) {
+        if (/*keyboardGrid == null && */IsFive(_handedness_left)) {
             FillKeyboardGrid();
+            return true;
         }
         else if (keyboardGrid != null && Time.time - keyboardActiveTime > 4f) {
             keyboardGrid = null;

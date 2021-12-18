@@ -12,6 +12,7 @@ public abstract class GestureWidget : Sensor
     static protected float keyboardActiveTime;
     public Transform _target;
     public Camera _camera;
+    public AudioSource _audioSource;
     protected Handedness _handedness_left, _handedness_right;
 
     private DateTime gestureStartTime;
@@ -163,9 +164,9 @@ public abstract class GestureWidget : Sensor
         {
             Vector3 norm = Vector3.Cross(q2.Position - q1.Position, q3.Position - q1.Position).normalized;
             float angle = Mathf.Abs(Vector3.SignedAngle(p4.Position - p1.Position, norm, q2.Position - q1.Position));
-            Debug.Log("DEBUG THUMB 1:" + Vector3.Angle(p2.Position - p1.Position, p3.Position - p1.Position).ToString());
-            Debug.Log("DEBUG THUMB 2:" + Vector3.Angle(p2.Position - p1.Position, p4.Position - p1.Position).ToString());
-            Debug.Log("DEBUG THUMB angle:" + angle.ToString());
+            // Debug.Log("DEBUG THUMB 1:" + Vector3.Angle(p2.Position - p1.Position, p3.Position - p1.Position).ToString());
+            // Debug.Log("DEBUG THUMB 2:" + Vector3.Angle(p2.Position - p1.Position, p4.Position - p1.Position).ToString());
+            // Debug.Log("DEBUG THUMB angle:" + angle.ToString());
             return Vector3.Angle(p2.Position - p1.Position, p3.Position - p1.Position) <= 20
                 && Vector3.Angle(p2.Position - p1.Position, p4.Position - p1.Position) <= 20
                 && 70 <= angle && angle <= 110;
@@ -187,9 +188,9 @@ public abstract class GestureWidget : Sensor
         {
             Vector3 norm = Vector3.Cross(q2.Position - q1.Position, q3.Position - q1.Position).normalized;
             float angle = Mathf.Abs(Vector3.SignedAngle(p4.Position - p1.Position, norm, q2.Position - q1.Position));
-            Debug.Log("DEBUG INDEX 1:" + Vector3.Angle(p2.Position - p1.Position, p3.Position - p1.Position).ToString());
-            Debug.Log("DEBUG INDEX 2:" + Vector3.Angle(p2.Position - p1.Position, p4.Position - p1.Position).ToString());
-            Debug.Log("DEBUG INDEX angle:" + angle.ToString());
+            // Debug.Log("DEBUG INDEX 1:" + Vector3.Angle(p2.Position - p1.Position, p3.Position - p1.Position).ToString());
+            // Debug.Log("DEBUG INDEX 2:" + Vector3.Angle(p2.Position - p1.Position, p4.Position - p1.Position).ToString());
+            // Debug.Log("DEBUG INDEX angle:" + angle.ToString());
             return Vector3.Angle(p2.Position - p1.Position, p3.Position - p1.Position) <= 20
                 && Vector3.Angle(p2.Position - p1.Position, p4.Position - p1.Position) <= 20
                 && 60 <= angle && angle <= 120;
@@ -211,9 +212,9 @@ public abstract class GestureWidget : Sensor
         {
             Vector3 norm = Vector3.Cross(q2.Position - q1.Position, q3.Position - q1.Position).normalized;
             float angle = Mathf.Abs(Vector3.SignedAngle(p4.Position - p1.Position, norm, q2.Position - q1.Position));
-            Debug.Log("DEBUG Middle 1:" + Vector3.Angle(p2.Position - p1.Position, p3.Position - p1.Position).ToString());
-            Debug.Log("DEBUG Middle 2:" + Vector3.Angle(p2.Position - p1.Position, p4.Position - p1.Position).ToString());
-            Debug.Log("DEBUG Middle angle:" + angle.ToString());
+            // Debug.Log("DEBUG Middle 1:" + Vector3.Angle(p2.Position - p1.Position, p3.Position - p1.Position).ToString());
+            // Debug.Log("DEBUG Middle 2:" + Vector3.Angle(p2.Position - p1.Position, p4.Position - p1.Position).ToString());
+            // Debug.Log("DEBUG Middle angle:" + angle.ToString());
             return Vector3.Angle(p2.Position - p1.Position, p3.Position - p1.Position) <= 20
                 && Vector3.Angle(p2.Position - p1.Position, p4.Position - p1.Position) <= 20
                 && 60 <= angle && angle <= 120;
@@ -235,9 +236,9 @@ public abstract class GestureWidget : Sensor
         {
             Vector3 norm = Vector3.Cross(q2.Position - q1.Position, q3.Position - q1.Position).normalized;
             float angle = Mathf.Abs(Vector3.SignedAngle(p4.Position - p1.Position, norm, q2.Position - q1.Position));
-            Debug.Log("DEBUG Ring 1:" + Vector3.Angle(p2.Position - p1.Position, p3.Position - p1.Position).ToString());
-            Debug.Log("DEBUG Ring 2:" + Vector3.Angle(p2.Position - p1.Position, p4.Position - p1.Position).ToString());
-            Debug.Log("DEBUG Ring angle:" + angle.ToString());
+            // Debug.Log("DEBUG Ring 1:" + Vector3.Angle(p2.Position - p1.Position, p3.Position - p1.Position).ToString());
+            // Debug.Log("DEBUG Ring 2:" + Vector3.Angle(p2.Position - p1.Position, p4.Position - p1.Position).ToString());
+            // Debug.Log("DEBUG Ring angle:" + angle.ToString());
             return Vector3.Angle(p2.Position - p1.Position, p3.Position - p1.Position) <= 20
                 //&& Vector3.Angle(p2.Position - p1.Position, p4.Position - p1.Position) <= 20
                 && 60 <= angle && angle <= 120;
@@ -259,9 +260,9 @@ public abstract class GestureWidget : Sensor
         {
             Vector3 norm = Vector3.Cross(q2.Position - q1.Position, q3.Position - q1.Position).normalized;
             float angle = Mathf.Abs(Vector3.SignedAngle(p4.Position - p1.Position, norm, q2.Position - q1.Position));
-            Debug.Log("DEBUG Pinky 1:" + Vector3.Angle(p2.Position - p1.Position, p3.Position - p1.Position).ToString());
-            Debug.Log("DEBUG Pinky 2:" + Vector3.Angle(p2.Position - p1.Position, p4.Position - p1.Position).ToString());
-            Debug.Log("DEBUG Pinky angle:" + angle.ToString());
+            // Debug.Log("DEBUG Pinky 1:" + Vector3.Angle(p2.Position - p1.Position, p3.Position - p1.Position).ToString());
+            // Debug.Log("DEBUG Pinky 2:" + Vector3.Angle(p2.Position - p1.Position, p4.Position - p1.Position).ToString());
+            // Debug.Log("DEBUG Pinky angle:" + angle.ToString());
             return Vector3.Angle(p2.Position - p1.Position, p3.Position - p1.Position) <= 20
                 && Vector3.Angle(p2.Position - p1.Position, p4.Position - p1.Position) <= 20
                 && 60 <= angle && angle <= 120;
@@ -333,9 +334,9 @@ public abstract class GestureWidget : Sensor
             HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, hand, out var p3)
         )
         {
-            Debug.Log("DEBUG SEVEN 1:"+(p2.Position-p1.Position).sqrMagnitude.ToString());
-            Debug.Log("DEBUG SEVEN 2:"+(p3.Position-p1.Position).sqrMagnitude.ToString());
-            Debug.Log("DEBUG SEVEN 3:"+(p3.Position-p2.Position).sqrMagnitude.ToString());
+            // Debug.Log("DEBUG SEVEN 1:"+(p2.Position-p1.Position).sqrMagnitude.ToString());
+            // Debug.Log("DEBUG SEVEN 2:"+(p3.Position-p1.Position).sqrMagnitude.ToString());
+            // Debug.Log("DEBUG SEVEN 3:"+(p3.Position-p2.Position).sqrMagnitude.ToString());
             return (p2.Position-p1.Position).sqrMagnitude <= 0.0008
                 && (p3.Position-p1.Position).sqrMagnitude <= 0.0008
                 && !IsThumbGrabbing(hand) && !IsIndexGrabbing(hand) && !IsMiddleGrabbing(hand);
@@ -368,9 +369,9 @@ public abstract class GestureWidget : Sensor
             float angle = Mathf.Abs(Vector3.SignedAngle(p2.Position - p1.Position, norm, q2.Position - q1.Position));
             float angle1 = Vector3.Angle(p2.Position - p1.Position, p3.Position - p2.Position);
             float angle2 = Vector3.Angle(p3.Position - p2.Position, p4.Position - p3.Position);
-            Debug.Log("DEBUG NINE INDEX 1:" + angle1.ToString());
-            Debug.Log("DEBUG NINE INDEX 2:" + angle2.ToString());
-            Debug.Log("DEBUG NINE INDEX angle:" + angle.ToString());
+            // Debug.Log("DEBUG NINE INDEX 1:" + angle1.ToString());
+            // Debug.Log("DEBUG NINE INDEX 2:" + angle2.ToString());
+            // Debug.Log("DEBUG NINE INDEX angle:" + angle.ToString());
             return 50 <= angle1 && angle1 <= 130
                 && 50 <= angle2 && angle2 <= 130
                 && 60 <= angle && angle <= 120;
@@ -508,8 +509,8 @@ public abstract class GestureWidget : Sensor
             HandJointUtils.TryGetJointPose(TrackedHandJoint.RingKnuckle, hand, out var q3)
         )
         {
-            Debug.Log("The Force hand:" + p.Position.ToString());
-            Debug.Log("The Force target:" + target.localPosition.ToString());
+            // Debug.Log("The Force hand:" + p.Position.ToString());
+            // Debug.Log("The Force target:" + target.localPosition.ToString());
             Vector3 norm = Vector3.Cross(q2.Position - q1.Position, q3.Position - q1.Position).normalized;
             Vector3 vec = p.Position - target.localPosition;
             Vector3 relative = new Vector3(0, 1, 0); // up direction
@@ -530,8 +531,8 @@ public abstract class GestureWidget : Sensor
             HandJointUtils.TryGetJointPose(TrackedHandJoint.RingKnuckle, hand, out var q3)
         )
         {
-            Debug.Log("The Force hand:" + p.Position.ToString());
-            Debug.Log("The Force target:" + target.localPosition.ToString());
+            // Debug.Log("The Force hand:" + p.Position.ToString());
+            // Debug.Log("The Force target:" + target.localPosition.ToString());
             Vector3 norm = Vector3.Cross(q2.Position - q1.Position, q3.Position - q1.Position).normalized;
             Vector3 vec = p.Position - target.localPosition;
             Vector3 relative = new Vector3(0, 1, 0); // up direction
@@ -572,13 +573,13 @@ public abstract class GestureWidget : Sensor
             if(p1.Position.y < camera.transform.localPosition.y - 0.3) return false;
             Vector3 tmp = camera.WorldToViewportPoint(p2.Position) - camera.WorldToViewportPoint(p1.Position);
             Vector3 vec = new Vector3(tmp.x, tmp.y, 0);
-            Debug.Log("Wave Right:  " + vec.ToString());
+            // Debug.Log("Wave Right:  " + vec.ToString());
             Vector3 up = new Vector3( 0, 1, 0 ); // up direction
             Vector3 parallel = new Vector3( 1, 0, 0 );
             // float angle_up = Vector3.Angle(vec, up);
             float angle_parallel = Vector3.Angle(vec, parallel);
             // Debug.Log("Wave Right angle_up:  " + angle_up.ToString());
-            Debug.Log("Wave Right angle_parallel:  " + angle_parallel.ToString());
+            // Debug.Log("Wave Right angle_parallel:  " + angle_parallel.ToString());
             // return (angle_up >= 45 && angle_up <= 135) &&
             //         (angle_parallel <= 75);
             return angle_parallel <= 75;
@@ -597,13 +598,13 @@ public abstract class GestureWidget : Sensor
             if(p1.Position.y < camera.transform.localPosition.y - 0.3) return false;
             Vector3 tmp = camera.WorldToViewportPoint(p2.Position) - camera.WorldToViewportPoint(p1.Position);
             Vector3 vec = new Vector3(tmp.x, tmp.y, 0);
-            Debug.Log("Wave Right:  " + vec.ToString());
+            // Debug.Log("Wave Right:  " + vec.ToString());
             Vector3 up = new Vector3( 0, 1, 0 ); // up direction
             Vector3 parallel = new Vector3( -1, 0, 0 );
             // float angle_up = Vector3.Angle(vec, up);
             float angle_parallel = Vector3.Angle(vec, parallel);
             // Debug.Log("Wave Right angle_up:  " + angle_up.ToString());
-            Debug.Log("Wave Right angle_parallel:  " + angle_parallel.ToString());
+            // Debug.Log("Wave Right angle_parallel:  " + angle_parallel.ToString());
             // return (angle_up >= 45 && angle_up <= 135) &&
             //         (angle_parallel <= 75);
             return angle_parallel <= 75;
@@ -629,23 +630,30 @@ public abstract class GestureWidget : Sensor
         pos = pos - keyboardGrid[0];
         float dx = keyboardGrid[1].sqrMagnitude;
         float dy = keyboardGrid[2].sqrMagnitude;
+        float dz = keyboardGrid[3].sqrMagnitude;
         float x = Vector3.Dot(pos, keyboardGrid[1]) / dx;
         float y = Vector3.Dot(pos, keyboardGrid[2]) / dy;
-        Debug.Log("Keyboard Check: expected: " + expected + " x: " + x + " y: " + y);
-        float scale = 0.5f;
+        float z = Vector3.Dot(pos, keyboardGrid[3]) / dz;
+        // Debug.Log("Keyboard Check: expected: " + expected + " x: " + x + " y: " + y + " z: " + z);
+        float scalex = 0.4f, scaley = 0.5f, scalez = 0.2f, pad = 0.2f;
+        y += 0.5f * scaley;
         int predict = -1;
-        if (y < -scale) predict = -1;
+        if (y < -1.5 * scaley) return false;
+        else if (-1.5 * scaley < y && y < -0.6 * scaley && x > -0.5 * scalex) predict = 0;
         else {
             int px, py;
-            if (x < -scale) px = 0;
-            else if (x > scale) px = 2;
-            else px = 1;
-            if (y < scale) py = 2;
-            else if (y > 2 * scale) py = 0;
-            else py = 1;
+            if (x < -scalex - pad) px = 0;
+            else if (x > scalex + pad) px = 2;
+            else if (-scalex < x && x < scalex) px = 1;
+            else return false;
+            if (y < scaley - pad) py = 2;
+            else if (y > 3 * scaley + pad) py = 0;
+            else if (scaley < y && y < 3 * scaley) py = 1;
+            else return false;
 
             predict = py * 3 + px + 1;
         }
+        if ((predict == 5 && Math.Abs(z) < 2 * scalez) || (predict != 5 && Math.Abs(z) < scalez)) return false;
         if (predict == expected) {
             keyboardActiveTime = Time.time;
             return true;
@@ -654,7 +662,7 @@ public abstract class GestureWidget : Sensor
     }
 
     protected void FillKeyboardGrid() {
-        keyboardGrid = new Vector3[3];
+        keyboardGrid = new Vector3[4];
         HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, _handedness_left, out var p0);
         HandJointUtils.TryGetJointPose(TrackedHandJoint.RingTip, _handedness_left, out var p1);
         HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, _handedness_left, out var p2);
@@ -663,9 +671,11 @@ public abstract class GestureWidget : Sensor
         Vector3 cen = p0.Position;
         Vector3 hor = 2 * (p3.Position - p1.Position);
         Vector3 ver = p2.Position - p0.Position;
+        Vector3 norm = Vector3.Cross(hor, ver);
         keyboardGrid[0] = cen;
         keyboardGrid[1] = hor;
         keyboardGrid[2] = ver;
+        keyboardGrid[3] = norm;
         keyboardActiveTime = Time.time;
     }
 }

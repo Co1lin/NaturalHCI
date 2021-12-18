@@ -94,6 +94,8 @@ public class SpeechRecognition : MonoBehaviour
 #else
         micPermissionGranted = true;
 #endif
+        micPermissionGranted = true;
+        StartContinuous();
     }
 
     /// <summary>

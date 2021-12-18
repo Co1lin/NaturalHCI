@@ -71,3 +71,5 @@ crashlytics-build.properties
 # macOS files
 .DS_Store
 
+/UserSettings/Layouts/default-2021.dwlt
+/UserSettings/Layouts/CurrentMaximizeLayout.dwlt
