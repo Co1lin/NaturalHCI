@@ -15,7 +15,7 @@ public class GestureWaveToLeft : GestureWidget
         {
             if(prev && Time.time - prev_time < 1f)
             {
-                Debug.Log("success");
+                // Debug.Log("success");
                 prev_time = Time.time;
                 return true;
             }
