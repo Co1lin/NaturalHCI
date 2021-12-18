@@ -5,7 +5,8 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Linq;
 using System.Threading;
-
+using Microsoft.MixedReality.Toolkit.Input;
+using Microsoft.MixedReality.Toolkit.UI;
 
 [System.Serializable]
 public class MyIntEvent : UnityEvent<string>
@@ -15,6 +16,8 @@ public class MyIntEvent : UnityEvent<string>
 public class NUIXSpeechRecognition :  MonoBehaviour
 {
     public WordAction[] trigger_words;
+    public AudioSource _audioSource;
+    public ToolTip _toolTip;
 
     //public UnityEvent<string> unityEvent;
     // Start is called before the first frame update
@@ -47,6 +50,28 @@ public class NUIXSpeechRecognition :  MonoBehaviour
         foreach (var word in result.Split(separators, StringSplitOptions.RemoveEmptyEntries))
         {
             string lword = word.ToString().ToLower();
+            Debug.Log("lword: "+lword);
+            if (lword.EndsWith("beats") || lword.EndsWith("beat") || lword.EndsWith("bits") || lword.EndsWith("bit") || lword.EndsWith("bids") || lword.EndsWith("bid"))
+            {
+                char[] seps = new char [] { ' ' };
+                foreach (var number in lword.Split(seps, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    Debug.Log("lword in: " + number);
+                    if (number.Length > 0)
+                    {
+                        int n = 0;
+                        if (int.TryParse(number, out n))
+                        {
+                            if (n >= 30 && n <= 200)
+                            {
+                                _audioSource.pitch = n / 132.0f;
+                                _toolTip.ToolTipText = number.ToString() + " beats";
+                            }
+                        }
+                    }
+                    break;
+                }
+            }
             foreach (WordAction wordAction in trigger_words)
             {
                 foreach (var actionword in wordAction.words)
