@@ -577,18 +577,19 @@ public abstract class GestureWidget : Sensor
             // if(p1.Position.y < camera.transform.localPosition.y - 0.3) return false;
             Vector3 tmp = camera.WorldToViewportPoint(p2.Position) - camera.WorldToViewportPoint(p1.Position);
             Vector3 vec_parallel = new Vector3(0, tmp.y, tmp.z);
-            Vector3 vec_vertical = new Vector3(tmp.x, tmp.y, 0);
+            // Vector3 vec_vertical = new Vector3(tmp.x, tmp.y, 0);
             // Debug.Log("Wave Right:  " + vec.ToString());
             Vector3 up = new Vector3( 0, 1, 0 ); // up direction
-            Vector3 parallel = new Vector3( 0, 0, 1 );
+            Vector3 parallel = new Vector3( 0, 0, -1 );
             // float angle_up = Vector3.Angle(vec, up);
             float angle_parallel = Vector3.Angle(vec_parallel, parallel);
-            float angle_vertical = Vector3.Angle(vec_vertical, up);
+            // float angle_vertical = Vector3.Angle(vec_vertical, up);
             // Debug.Log("Wave Right angle_up:  " + angle_up.ToString());
             Debug.Log("Wave Right angle_parallel:  " + angle_parallel.ToString());
             // return (angle_up >= 45 && angle_up <= 135) &&
             //         (angle_parallel <= 75);
-            return angle_parallel <= 75 && angle_vertical <= 15;
+            // return angle_parallel <= 75 && angle_vertical <= 15;
+            return angle_parallel <= 75;
         }
         return false;
     }
@@ -604,18 +605,19 @@ public abstract class GestureWidget : Sensor
             // if(p1.Position.y < camera.transform.localPosition.y - 0.3) return false;
             Vector3 tmp = camera.WorldToViewportPoint(p2.Position) - camera.WorldToViewportPoint(p1.Position);
             Vector3 vec_parallel = new Vector3(0, tmp.y, tmp.z);
-            Vector3 vec_vertical = new Vector3(tmp.x, tmp.y, 0);
+            // Vector3 vec_vertical = new Vector3(tmp.x, tmp.y, 0);
             // Debug.Log("Wave Left:  " + vec.ToString());
             Vector3 up = new Vector3( 0, 1, 0 ); // up directSion
-            Vector3 parallel = new Vector3( 0, 0, -1 );
+            Vector3 parallel = new Vector3( 0, 0, 1 );
             // float angle_up = Vector3.Angle(vec, up);
             float angle_parallel = Vector3.Angle(vec_parallel, parallel);
-            float angle_vertical = Vector3.Angle(vec_vertical, up);
+            // float angle_vertical = Vector3.Angle(vec_vertical, up);
             // Debug.Log("Wave Left angle_up:  " + angle_up.ToString());
             Debug.Log("Wave Left angle_parallel:  " + angle_parallel.ToString());
             // return (angle_up >= 45 && angle_up <= 135) &&
             //         (angle_parallel <= 75);
-            return angle_parallel <= 75 && angle_vertical <= 15;
+            // return angle_parallel <= 75 && angle_vertical <= 15;
+            return angle_parallel <= 75;
         }
         return false;
     }
@@ -663,6 +665,9 @@ public abstract class GestureWidget : Sensor
         return -1;
     }
 
+
+    
+
     protected void FillKeyboardGrid() {
         keyboardGrid = new Vector3[4];
         HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, _handedness_left, out var p0);
@@ -679,5 +684,26 @@ public abstract class GestureWidget : Sensor
         keyboardGrid[2] = ver;
         keyboardGrid[3] = norm;
         keyboardActiveTime = Time.time;
+    }
+
+    protected int CircleAngle(Handedness hand)
+    {
+        if (
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand, out var p1) &&
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.Wrist, hand, out var p2)
+        )
+        {
+            // Debug.Log("The Force hand:" + p.Position.ToString());
+            // Debug.Log("The Force target:" + target.localPosition.ToString());
+            Vector3 tmp = p1.Position - p2.Position;
+            Vector3 vec = new Vector3(0, tmp.y, tmp.z); // up direction
+            Vector3 y_axis = new Vector3(0, 1, 0);
+            Vector3 z_axis = new Vector3(0, 0, 1);
+            float angle_y = Vector3.Angle(vec, y);
+            float angle_z = Vector3.Angle(vec, z);
+            int result = angle_z < 90? (int)angle_y : 360 - (int)angle_y;
+            return result;
+        }
+        return -1;
     }
 }
