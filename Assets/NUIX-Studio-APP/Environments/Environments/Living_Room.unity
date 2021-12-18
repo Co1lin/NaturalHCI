@@ -8131,6 +8131,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1892050351966699856, guid: 8e7a02426e5bc434b9fbc56e22c9fec5, type: 3}
+      propertyPath: _audioSource
+      value: 
+      objectReference: {fileID: 7965173044391283301}
     - target: {fileID: 2432804286601716568, guid: 8e7a02426e5bc434b9fbc56e22c9fec5, type: 3}
       propertyPath: words.Array.size
       value: 4
