@@ -9,9 +9,6 @@ public class GestureKeyboardRecord : GestureWidget
             FillKeyboardGrid();
             return true;
         }
-        else if (keyboardGrid != null && Time.time - keyboardActiveTime > 4f) {
-            keyboardGrid = null;
-        }
         return false;
     }
 }
