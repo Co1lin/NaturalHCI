@@ -629,23 +629,30 @@ public abstract class GestureWidget : Sensor
         pos = pos - keyboardGrid[0];
         float dx = keyboardGrid[1].sqrMagnitude;
         float dy = keyboardGrid[2].sqrMagnitude;
+        float dz = keyboardGrid[3].sqrMagnitude;
         float x = Vector3.Dot(pos, keyboardGrid[1]) / dx;
         float y = Vector3.Dot(pos, keyboardGrid[2]) / dy;
-        Debug.Log("Keyboard Check: expected: " + expected + " x: " + x + " y: " + y);
-        float scale = 0.5f;
+        float z = Vector3.Dot(pos, keyboardGrid[3]) / dz;
+        Debug.Log("Keyboard Check: expected: " + expected + " x: " + x + " y: " + y + " z: " + z);
+        float scalex = 0.4f, scaley = 0.5f, scalez = 0.2f, pad = 0.2f;
+        y += 0.5f * scaley;
         int predict = -1;
-        if (y < -scale) predict = -1;
+        if (y < -1.5 * scaley) return false;
+        else if (-1.5 * scaley < y && y < -0.6 * scaley && x > -0.5 * scalex) predict = 0;
         else {
             int px, py;
-            if (x < -scale) px = 0;
-            else if (x > scale) px = 2;
-            else px = 1;
-            if (y < scale) py = 2;
-            else if (y > 2 * scale) py = 0;
-            else py = 1;
+            if (x < -scalex - pad) px = 0;
+            else if (x > scalex + pad) px = 2;
+            else if (-scalex < x && x < scalex) px = 1;
+            else return false;
+            if (y < scaley - pad) py = 2;
+            else if (y > 3 * scaley + pad) py = 0;
+            else if (scaley < y && y < 3 * scaley) py = 1;
+            else return false;
 
             predict = py * 3 + px + 1;
         }
+        if ((predict == 5 && Math.Abs(z) < 2 * scalez) || (predict != 5 && Math.Abs(z) < scalez)) return false;
         if (predict == expected) {
             keyboardActiveTime = Time.time;
             return true;
@@ -654,7 +661,7 @@ public abstract class GestureWidget : Sensor
     }
 
     protected void FillKeyboardGrid() {
-        keyboardGrid = new Vector3[3];
+        keyboardGrid = new Vector3[4];
         HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, _handedness_left, out var p0);
         HandJointUtils.TryGetJointPose(TrackedHandJoint.RingTip, _handedness_left, out var p1);
         HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, _handedness_left, out var p2);
@@ -663,9 +670,11 @@ public abstract class GestureWidget : Sensor
         Vector3 cen = p0.Position;
         Vector3 hor = 2 * (p3.Position - p1.Position);
         Vector3 ver = p2.Position - p0.Position;
+        Vector3 norm = Vector3.Cross(hor, ver);
         keyboardGrid[0] = cen;
         keyboardGrid[1] = hor;
         keyboardGrid[2] = ver;
+        keyboardGrid[3] = norm;
         keyboardActiveTime = Time.time;
     }
 }
