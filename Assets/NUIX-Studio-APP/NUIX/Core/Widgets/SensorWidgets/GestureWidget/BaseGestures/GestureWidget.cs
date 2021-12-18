@@ -568,7 +568,7 @@ public abstract class GestureWidget : Sensor
 
     protected bool IsWaveRight(Handedness hand, Camera camera)
     {
-        if (!IsMiddleStraight(hand)) return false;
+        // if (!IsMiddleStraight(hand)) return false;
         if (
             HandJointUtils.TryGetJointPose(TrackedHandJoint.Wrist, hand, out var p1) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, hand, out var p2)
@@ -595,7 +595,7 @@ public abstract class GestureWidget : Sensor
 
     protected bool IsWaveLeft(Handedness hand, Camera camera)
     {
-        if (!IsMiddleStraight(hand)) return false;
+        // if (!IsMiddleStraight(hand)) return false;
         if (
             HandJointUtils.TryGetJointPose(TrackedHandJoint.Wrist, hand, out var p1) &&
             HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, hand, out var p2)
