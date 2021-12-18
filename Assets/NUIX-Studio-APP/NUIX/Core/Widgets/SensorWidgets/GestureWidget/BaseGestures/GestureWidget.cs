@@ -579,7 +579,7 @@ public abstract class GestureWidget : Sensor
             Vector3 vec = new Vector3(0, tmp.y, tmp.z);
             // Debug.Log("Wave Right:  " + vec.ToString());
             Vector3 up = new Vector3( 0, 1, 0 ); // up direction
-            Vector3 parallel = new Vector3( 0, 0, -1 );
+            Vector3 parallel = new Vector3( -1, 0, 0 );
             // float angle_up = Vector3.Angle(vec, up);
             float angle_parallel = Vector3.Angle(vec, parallel);
             // Debug.Log("Wave Right angle_up:  " + angle_up.ToString());
@@ -604,7 +604,7 @@ public abstract class GestureWidget : Sensor
             Vector3 vec = new Vector3(0, tmp.y, tmp.z);
             // Debug.Log("Wave Left:  " + vec.ToString());
             Vector3 up = new Vector3( 0, 1, 0 ); // up direction
-            Vector3 parallel = new Vector3( 0, 0, 1 );
+            Vector3 parallel = new Vector3( 1, 0, 0 );
             // float angle_up = Vector3.Angle(vec, up);
             float angle_parallel = Vector3.Angle(vec, parallel);
             // Debug.Log("Wave Left angle_up:  " + angle_up.ToString());
