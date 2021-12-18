@@ -1,5 +1,6 @@
 using Microsoft.MixedReality.Toolkit.Input;
 using Microsoft.MixedReality.Toolkit.Utilities;
+using Microsoft.MixedReality.Toolkit.UI;
 using System;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public abstract class GestureWidget : Sensor
     public Transform _target;
     public Camera _camera;
     public AudioSource _audioSource;
+    public ToolTip _toolTip;
     protected Handedness _handedness_left, _handedness_right;
 
     private DateTime gestureStartTime;
@@ -616,52 +618,44 @@ public abstract class GestureWidget : Sensor
     
     // ================================================================
 
-    protected bool IsKeyboard(int expected, Handedness hand)
-    {
-        if (keyboardGrid == null) return false;
+    public int keyboardGet(Handedness hand) {
+        if (keyboardGrid == null) return -1;
         if (
-            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand, out var p2)
+            HandJointUtils.TryGetJointPose(TrackedHandJoint.IndexTip, hand, out var p)
         )
         {
-            return keyboardCheck(expected, p2.Position);
-        }
-        return false;
-    }
+            Vector3 pos = p.Position;
+            pos = pos - keyboardGrid[0];
+            float dx = keyboardGrid[1].sqrMagnitude;
+            float dy = keyboardGrid[2].sqrMagnitude;
+            float dz = keyboardGrid[3].sqrMagnitude;
+            float x = Vector3.Dot(pos, keyboardGrid[1]) / dx;
+            float y = Vector3.Dot(pos, keyboardGrid[2]) / dy;
+            float z = Vector3.Dot(pos, keyboardGrid[3]) / dz;
+            // Debug.Log("Keyboard Check: expected: " + expected + " x: " + x + " y: " + y + " z: " + z);
+            float scalex = 0.4f, scaley = 0.5f, scalez = 0.2f, pad = 0.2f;
+            y += 0.5f * scaley;
+            int predict = -1;
+            if (y < -1.5 * scaley) return -1;
+            else if (-1.5 * scaley < y && y < -0.6 * scaley && x > -0.5 * scalex) predict = 0;
+            else {
+                int px, py;
+                if (x < -scalex - pad) px = 0;
+                else if (x > scalex + pad) px = 2;
+                else if (-scalex < x && x < scalex) px = 1;
+                else return -1;
+                if (y < scaley - pad) py = 2;
+                else if (y > 3 * scaley + pad) py = 0;
+                else if (scaley < y && y < 3 * scaley) py = 1;
+                else return -1;
 
-    private bool keyboardCheck(int expected, Vector3 pos) {
-        if (keyboardGrid == null) return false;
-        pos = pos - keyboardGrid[0];
-        float dx = keyboardGrid[1].sqrMagnitude;
-        float dy = keyboardGrid[2].sqrMagnitude;
-        float dz = keyboardGrid[3].sqrMagnitude;
-        float x = Vector3.Dot(pos, keyboardGrid[1]) / dx;
-        float y = Vector3.Dot(pos, keyboardGrid[2]) / dy;
-        float z = Vector3.Dot(pos, keyboardGrid[3]) / dz;
-        // Debug.Log("Keyboard Check: expected: " + expected + " x: " + x + " y: " + y + " z: " + z);
-        float scalex = 0.4f, scaley = 0.5f, scalez = 0.2f, pad = 0.2f;
-        y += 0.5f * scaley;
-        int predict = -1;
-        if (y < -1.5 * scaley) return false;
-        else if (-1.5 * scaley < y && y < -0.6 * scaley && x > -0.5 * scalex) predict = 0;
-        else {
-            int px, py;
-            if (x < -scalex - pad) px = 0;
-            else if (x > scalex + pad) px = 2;
-            else if (-scalex < x && x < scalex) px = 1;
-            else return false;
-            if (y < scaley - pad) py = 2;
-            else if (y > 3 * scaley + pad) py = 0;
-            else if (scaley < y && y < 3 * scaley) py = 1;
-            else return false;
-
-            predict = py * 3 + px + 1;
-        }
-        if ((predict == 5 && Math.Abs(z) < 2 * scalez) || (predict != 5 && Math.Abs(z) < scalez)) return false;
-        if (predict == expected) {
+                predict = py * 3 + px + 1;
+            }
+            if ((predict == 5 && Math.Abs(z) < 2 * scalez) || (predict != 5 && Math.Abs(z) < scalez)) return -1;
             keyboardActiveTime = Time.time;
-            return true;
+            return predict;
         }
-        return false;
+        return -1;
     }
 
     protected void FillKeyboardGrid() {
