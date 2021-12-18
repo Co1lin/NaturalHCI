@@ -632,6 +632,7 @@ public abstract class GestureWidget : Sensor
             float x = Vector3.Dot(pos, keyboardGrid[1]) / dx;
             float y = Vector3.Dot(pos, keyboardGrid[2]) / dy;
             float z = Vector3.Dot(pos, keyboardGrid[3]) / dz;
+            Debug.Log("z: " + z.ToString() + " dz: " + dz.ToString());
             // Debug.Log("Keyboard Check: expected: " + expected + " x: " + x + " y: " + y + " z: " + z);
             float scalex = 0.4f, scaley = 0.5f, scalez = 1f, pad = 0.2f;
             y += 0.5f * scaley;
@@ -651,7 +652,7 @@ public abstract class GestureWidget : Sensor
 
                 predict = py * 3 + px + 1;
             }
-            if ((predict == 5 && Math.Abs(z) < 3 * scalez) || (predict != 5 && Math.Abs(z) < scalez)) return -1;
+            if ((predict == 5 && z < - 3 * scalez) || (predict != 5 && z < - scalez)) return -1;
             keyboardActiveTime = Time.time;
             return predict;
         }
@@ -668,7 +669,7 @@ public abstract class GestureWidget : Sensor
         Vector3 cen = p0.Position;
         Vector3 hor = 2 * (p3.Position - p1.Position);
         Vector3 ver = p2.Position - p0.Position;
-        Vector3 norm = Vector3.Cross(hor, ver).normalized * 0.05f;
+        Vector3 norm = Vector3.Cross(hor, ver).normalized * 0.005f;
         keyboardGrid[0] = cen;
         keyboardGrid[1] = hor;
         keyboardGrid[2] = ver;
