@@ -6,7 +6,7 @@ using UnityEngine.Events;
 using System.Linq;
 using System.Threading;
 using Microsoft.MixedReality.Toolkit.Input;
-
+using Microsoft.MixedReality.Toolkit.UI;
 
 [System.Serializable]
 public class MyIntEvent : UnityEvent<string>
@@ -17,6 +17,7 @@ public class NUIXSpeechRecognition :  MonoBehaviour
 {
     public WordAction[] trigger_words;
     public AudioSource _audioSource;
+    public ToolTip _toolTip;
 
     //public UnityEvent<string> unityEvent;
     // Start is called before the first frame update
@@ -64,6 +65,7 @@ public class NUIXSpeechRecognition :  MonoBehaviour
                             if (n >= 30 && n <= 200)
                             {
                                 _audioSource.pitch = n / 132.0f;
+                                _toolTip.ToolTipText = number.ToString() + " beats";
                             }
                         }
                     }
