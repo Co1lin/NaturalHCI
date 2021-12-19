@@ -42,8 +42,7 @@ public class SightSensor : Sensor
         Vector3 viewPos = _camera.WorldToViewportPoint(_target.position);
         // Checking if the target object is inside the defined camera view
         Debug.Log("viewPos: "+viewPos.ToString());
-        // if ((viewPos.z > 0.0F) && (viewPos.x < 1.0F) && (viewPos.x > 0.0F))
-        if (viewPos.z > 2.5F)
+        if ((viewPos.z > 0.0F) && (viewPos.x > 0.2F) && (viewPos.x < 0.8F))
         {
             SensorTrigger();
         }
