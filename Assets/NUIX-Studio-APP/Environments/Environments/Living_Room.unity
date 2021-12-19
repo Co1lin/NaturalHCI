@@ -205,6 +205,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!1001 &12054344
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -367,6 +368,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!4 &60830889 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 410276, guid: 751f193c0434849f995d247e088796cb, type: 3}
@@ -438,6 +440,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!1001 &77362880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -657,6 +660,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!1001 &129498544
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -776,6 +780,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!1 &157526089
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,6 +908,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!4 &183629841 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6066724869436565231, guid: f47f1e79863e27c46904308902d30551, type: 3}
@@ -1026,6 +1032,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!4 &218487098 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 413192, guid: aa8f027e7f20b41ebb921f8d8003a776, type: 3}
@@ -1207,6 +1214,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!4 &267088312 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6066724869436565231, guid: f47f1e79863e27c46904308902d30551, type: 3}
@@ -1472,6 +1480,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!1001 &336169825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1816,6 +1825,7 @@ MonoBehaviour:
   _camera: {fileID: 1087739261}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!4 &364075608
 Transform:
   m_ObjectHideFlags: 0
@@ -1919,6 +1929,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!1001 &418301913
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2011,19 +2022,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_OnSensorTriggered:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1465821350}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: set_playbackTime
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 10
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_OnSensorUntriggered:
     m_PersistentCalls:
       m_Calls: []
@@ -2031,6 +2030,7 @@ MonoBehaviour:
   _camera: {fileID: 1087739261}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!1 &457375080
 GameObject:
   m_ObjectHideFlags: 0
@@ -2097,6 +2097,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!1001 &458150582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2209,6 +2210,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!4 &459278326 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6066724869436565231, guid: f47f1e79863e27c46904308902d30551, type: 3}
@@ -2459,6 +2461,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 1125386730}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!1001 &541968554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3933,6 +3936,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!1001 &890297279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4989,6 +4993,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!1001 &1056807126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5862,6 +5867,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 1125386730}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!1001 &1188031245
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7334,6 +7340,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!1001 &1526774187
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7675,6 +7682,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!1 &1615678731
 GameObject:
   m_ObjectHideFlags: 0
@@ -9353,6 +9361,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 1465821350}
 --- !u!1 &2020598104
 GameObject:
   m_ObjectHideFlags: 0
@@ -9431,6 +9440,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!4 &2021447691 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6066724869436565231, guid: f47f1e79863e27c46904308902d30551, type: 3}
@@ -9681,6 +9691,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!1 &2043929798
 GameObject:
   m_ObjectHideFlags: 0
@@ -9735,6 +9746,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 7965173044391283301}
   _toolTip: {fileID: 1056807127}
+  _animator: {fileID: 0}
 --- !u!1 &2067820805
 GameObject:
   m_ObjectHideFlags: 0
@@ -10045,6 +10057,7 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 0}
   _toolTip: {fileID: 0}
+  _animator: {fileID: 0}
 --- !u!1001 &2146471327
 PrefabInstance:
   m_ObjectHideFlags: 0

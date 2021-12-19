@@ -15,6 +15,7 @@ public abstract class GestureWidget : Sensor
     public Camera _camera;
     public AudioSource _audioSource;
     public ToolTip _toolTip;
+    public Animator _animator;
     protected Handedness _handedness_left, _handedness_right;
 
     private DateTime gestureStartTime;

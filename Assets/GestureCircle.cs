@@ -64,12 +64,13 @@ public class GestureCircle : GestureWidget
                 float rate = dp_bucket[angle_bucket_size-1] / (float)(history.Count);
                 Debug.Log("rate: "+rate.ToString()); // > 0.4 顺时针， < 0.4 逆时针
                 if (rate > 0.4f) {
-                    // TODO do something
+                    _animator.speed += 0.6f;
                 } else {
-                    // TODO do something
+                    _animator.speed -= 0.6f;
                 }
                 prev_time = Time.time;
                 history.Clear();
+                return rate > 0.4f;
             }
         }
         if (
