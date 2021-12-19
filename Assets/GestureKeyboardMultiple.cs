@@ -26,13 +26,23 @@ public class GestureKeyboardMultiple : GestureWidget
         }
         if (prev == -1 && tmp != -1 && Time.time - prev_time > 0.5f) {
             number = number * 10 + tmp;
-            _toolTip.ToolTipText = number.ToString();
             prev_number = tmp;
+            if (_screen.enabled) {
+                _toolTip2.ToolTipText = number.ToString();
+            }
+            if (_audioSource.enabled) {
+                _toolTip.ToolTipText = number.ToString();
+            }
         }
         else if (keyboardGrid != null && Time.time - keyboardActiveTime > 2f) {
+            if (_screen.enabled) {
+                _screen.ToChannel(number);
+            }
             number = Math.Max(Math.Min(number, 200), 30);
-            _audioSource.pitch = number / 132.0f;
-            _toolTip.ToolTipText = number.ToString() + " beats";
+            if (_audioSource.enabled) {
+                _audioSource.pitch = number / 132.0f;
+                _toolTip.ToolTipText = number.ToString() + " beats";
+            }
             number = 0;
             keyboardGrid = null;
         }

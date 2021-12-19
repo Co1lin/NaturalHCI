@@ -1,11 +1,17 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.MixedReality.Toolkit.Input;
+using Microsoft.MixedReality.Toolkit.Utilities;
+using Microsoft.MixedReality.Toolkit.UI;
+using System;
 public class Screen_Render : MonoBehaviour
 {
     public MeshRenderer meshRenderer;
     public Material[] channels;
     public Material screen_saver;
+    public Material menu;
+    public ToolTip toolTip;
     int count;
     bool brightness_uping;
     bool brightness_downing;
@@ -17,7 +23,9 @@ public class Screen_Render : MonoBehaviour
         }
     }
     public void ToChannel(int num) {
-        ChangeScreen(channels[num - 1]);
+        if(num >= channels.Length) num = 0;
+        toolTip.ToolTipText = num.ToString();
+        ChangeScreen(channels[num]);
     }
 
     public void ToScreenSaver() {
@@ -58,6 +66,9 @@ public class Screen_Render : MonoBehaviour
         count = 0;
         brightness_uping = false;
         brightness_downing = false;
+        Debug.Log("Aaaaaaaa" + meshRenderer.material);
+        meshRenderer.material.mainTextureOffset = new Vector2(12, -12);
+        Debug.Log("Aaaaaaaa" + meshRenderer.material);
     }
 
     // void Update()
