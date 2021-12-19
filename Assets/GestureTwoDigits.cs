@@ -11,12 +11,12 @@ public class GestureTwoDigits : GestureWidget
         int number_left = getNumber(_handedness_left);
         int number_right = getNumber(_handedness_right);
         if (HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, _handedness_left, out var palm)) {
-            if (number_right != -1) {
-                int number = number_right;
+            if (number_left != -1 && number_right != -1) {
+                int number = number_left * 10 + number_right;
                 work(number);
             }
-        } else if (number_left != -1 && number_right != -1) {
-            int number = number_left * 10 + number_right;
+        } else if (number_right != -1) {
+            int number = number_right;
             work(number);
         }
         return false;
