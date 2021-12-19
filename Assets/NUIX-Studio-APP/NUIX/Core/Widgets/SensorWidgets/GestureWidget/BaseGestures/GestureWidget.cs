@@ -552,17 +552,17 @@ public abstract class GestureWidget : Sensor
             HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleTip, hand, out var p)
         )
         {
-            Debug.Log("hand Object: " + p.Position.ToString() + " touch Object: " + target.localPosition.ToString());
-            Vector3 vec = p.Position - target.localPosition;
-            return vec.sqrMagnitude <= 0.1;
+            Vector3 vec = p.Position - target.position;
+            // Debug.Log("hand Object: " + p.Position.ToString() + " touch Object: " + target.position.ToString() + " dis: "+vec.sqrMagnitude.ToString());
+            return vec.sqrMagnitude <= 0.04;
         }
         else if (
             HandJointUtils.TryGetJointPose(TrackedHandJoint.MiddleMetacarpal, hand, out var p2)
         )
         {
-            Debug.Log("hand Object: " + p.Position.ToString() + " touch Object: " + target.localPosition.ToString());
-            Vector3 vec = p2.Position - target.localPosition;
-            return vec.sqrMagnitude <= 0.1;
+            Vector3 vec = p2.Position - target.position;
+            // Debug.Log("hand Object: " + p.Position.ToString() + " touch Object: " + target.position.ToString() + " dis: "+vec.sqrMagnitude.ToString());
+            return vec.sqrMagnitude <= 0.04;
         }
         return false;
     }

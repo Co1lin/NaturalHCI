@@ -12,7 +12,7 @@ public class GestureCircle : GestureWidget
     private int[] angle_bucket;
     private int[] dp_bucket;
     private const int angle_bucket_size = 18;
-    private float duration = 2.0f;
+    private float duration = 1.0f;
     private List<Vector3> history;
     public override void Start()
     {
@@ -64,13 +64,20 @@ public class GestureCircle : GestureWidget
                 float rate = dp_bucket[angle_bucket_size-1] / (float)(history.Count);
                 Debug.Log("rate: "+rate.ToString()); // > 0.4 顺时针， < 0.4 逆时针
                 if (rate > 0.4f) {
-                    _animator.speed += 0.6f;
+                    if (_animator.speed < 1.0f) _animator.speed += 0.2f;
+                    else _animator.speed += 0.4f;
+                    _toolTip.ToolTipText = "speed: "+_animator.speed.ToString("0.0");
                 } else {
-                    _animator.speed -= 0.6f;
+                    if (_animator.speed > 1.0f) _animator.speed -= 0.4f;
+                    else _animator.speed -= 0.2f;
+                    _toolTip.ToolTipText = "speed: "+_animator.speed.ToString("0.0");
                 }
                 prev_time = Time.time;
+                List<Vector3> tmp = new List<Vector3>(history);
                 history.Clear();
-                return rate > 0.4f;
+                for (int i = tmp.Count/2; i < tmp.Count; i++) {
+                    history.Add(tmp[i]);
+                }
             }
         }
         if (
