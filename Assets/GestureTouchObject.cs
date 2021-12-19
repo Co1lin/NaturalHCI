@@ -4,6 +4,6 @@ public class GestureTouchObject : GestureWidget
 {
     public override bool GestureCondition()
     {
-        return IsTouchObject(_handedness_right, _target);
+        return IsTouchObject(_handedness_left, _target);
     }
 }

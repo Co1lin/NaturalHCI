@@ -17,6 +17,12 @@ public class GestureKeyboardMultiple : GestureWidget
 
     public override bool GestureCondition()
     {
+        if (!_audioSource.enabled) {
+            number = 0;
+            keyboardGrid = null;
+            return false;
+        }
+        if (IsFive(_handedness_left)) FillKeyboardGrid();
         int tmp = keyboardGet(_handedness_right);
         int prev = prev_number;
         if (prev != -1 && tmp == -1) {
@@ -24,27 +30,16 @@ public class GestureKeyboardMultiple : GestureWidget
             prev_number = -1;
             return true;
         }
-        if (prev == -1 && tmp != -1 && Time.time - prev_time > 0.5f) {
+        if (prev == -1 && tmp != -1 && Time.time - prev_time > 0.8f) {
             number = number * 10 + tmp;
             prev_number = tmp;
-            if (_screen.enabled) {
-                _toolTip2.ToolTipText = number.ToString();
-            }
-            if (_audioSource.enabled) {
-                _toolTip.ToolTipText = number.ToString();
-            }
+            _toolTip.ToolTipText = number.ToString();
         }
-        else if (keyboardGrid != null && Time.time - keyboardActiveTime > 2f) {
-            Debug.Log("Keyboard Multiple: " + number.ToString() + " screen enabled: " + _screen.enabled.ToString() + " audio enabled: " + _audioSource.enabled.ToString());
-            if (_screen.enabled) {
-                _screen.ToChannel(number);
-                _toolTip2.ToolTipText = number.ToString();
-            }
+        if (keyboardGrid != null && Time.time - keyboardActiveTime > 2.0f) {
+            Debug.Log("KeyKey Multiple: " + number.ToString() + " audio enabled: " + _audioSource.enabled.ToString());
             number = Math.Max(Math.Min(number, 200), 30);
-            if (_audioSource.enabled) {
-                _audioSource.pitch = number / 132.0f;
-                _toolTip.ToolTipText = number.ToString() + " beats";
-            }
+            _audioSource.pitch = number / 132.0f;
+            _toolTip.ToolTipText = number.ToString() + " beats";
             number = 0;
             keyboardGrid = null;
         }

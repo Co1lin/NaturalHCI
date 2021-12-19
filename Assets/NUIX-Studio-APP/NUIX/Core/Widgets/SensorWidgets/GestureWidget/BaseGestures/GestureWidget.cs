@@ -645,8 +645,8 @@ public abstract class GestureWidget : Sensor
             float scalex = 0.4f, scaley = 0.5f, scalez = 1f, pad = 0.2f;
             y += 0.5f * scaley;
             int predict = -1;
-            if (y < -1.5 * scaley) return -1;
-            else if (-1.5 * scaley < y && y < -0.6 * scaley && x > -0.5 * scalex) predict = 0;
+            if (y < -2.5 * scaley) return -1;
+            else if (-2.5 * scaley < y && y < -0.6 * scaley && x > -0.5 * scalex) predict = 0;
             else {
                 int px, py;
                 if (x < -scalex - pad) px = 0;

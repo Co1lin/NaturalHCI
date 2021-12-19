@@ -725,7 +725,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 144045572}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7777b7077a3c3480dada92cdcc1f9f69, type: 3}
   m_Name: 
@@ -879,7 +879,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 178229960}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f5b228ae613b4f57b3d187b0b690112, type: 3}
   m_Name: 
@@ -1041,7 +1041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 24da116da1bdc42f9baa1d364abfbf73, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 24da116da1bdc42f9baa1d364abfbf73, type: 3}
       propertyPath: m_LocalScale.x
@@ -1354,7 +1354,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1865632202933427429, guid: dc451a9f3285e4eadbb141a662f2edae, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1865632202933427429, guid: dc451a9f3285e4eadbb141a662f2edae, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2021,13 +2021,25 @@ MonoBehaviour:
   m_OnSensorTriggered:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 890297281}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: PlayOneShot
-        m_Mode: 2
+      - m_Target: {fileID: 1110977785}
+        m_TargetAssemblyTypeName: Screen_Render, Assembly-CSharp
+        m_MethodName: ToScreenSaver
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 8300000, guid: 5ac6fe579e904064b92a0c15d2cc1222, type: 3}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8210892931495611107}
+        m_TargetAssemblyTypeName: Piano_Screen_Renderer, Assembly-CSharp
+        m_MethodName: ToPage
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -2837,7 +2849,7 @@ Transform:
   - {fileID: 1740164844}
   - {fileID: 463137977}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &631109723
 PrefabInstance:
@@ -3899,6 +3911,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 7965173044391283301}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 7965173044391283301}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
   m_OnSensorUntriggered:
     m_PersistentCalls:
       m_Calls:
@@ -3927,6 +3963,18 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 8210892931495611107}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7965173044391283301}
         m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
         m_MethodName: set_enabled
         m_Mode: 6
@@ -4038,7 +4086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 431520, guid: 0525bbd150d4d42f1aaf34f8112f4d70, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 431520, guid: 0525bbd150d4d42f1aaf34f8112f4d70, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5117,7 +5165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8222481329602893483, guid: 247dc8aebe30ca2408e8293a883c75df, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8222481329602893483, guid: 247dc8aebe30ca2408e8293a883c75df, type: 3}
       propertyPath: m_LocalScale.x
@@ -5525,7 +5573,6 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 2cba273cc5d85458fa4edfde31619a89, type: 2}
   screen_saver: {fileID: 2100000, guid: 47f970c287a9d4b89af9efc738a21ac9, type: 2}
   menu: {fileID: 0}
-  toolTip: {fileID: 0}
 --- !u!4 &1117895522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 496440, guid: b7f0c6b4626a24707961eb0600fca643, type: 3}
@@ -5714,12 +5761,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8222481329602893483, guid: 247dc8aebe30ca2408e8293a883c75df, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222481329602893483, guid: 247dc8aebe30ca2408e8293a883c75df, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222481329602893483, guid: 247dc8aebe30ca2408e8293a883c75df, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222481329602893483, guid: 247dc8aebe30ca2408e8293a883c75df, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.758
       objectReference: {fileID: 0}
     - target: {fileID: 8222481329602893483, guid: 247dc8aebe30ca2408e8293a883c75df, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.129
+      value: 1.949
       objectReference: {fileID: 0}
     - target: {fileID: 8222481329602893483, guid: 247dc8aebe30ca2408e8293a883c75df, type: 3}
       propertyPath: m_LocalPosition.z
@@ -5755,7 +5814,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8222863950748663225, guid: 247dc8aebe30ca2408e8293a883c75df, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.11091639
+      value: 0.14683278
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222863950748663225, guid: 247dc8aebe30ca2408e8293a883c75df, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0549071
       objectReference: {fileID: 0}
     - target: {fileID: 8329787883158438443, guid: 247dc8aebe30ca2408e8293a883c75df, type: 3}
       propertyPath: toolTipText
@@ -7852,6 +7915,18 @@ PrefabInstance:
       value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8222481329602893483, guid: 247dc8aebe30ca2408e8293a883c75df, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222481329602893483, guid: 247dc8aebe30ca2408e8293a883c75df, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222481329602893483, guid: 247dc8aebe30ca2408e8293a883c75df, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222481329602893483, guid: 247dc8aebe30ca2408e8293a883c75df, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.8152673
       objectReference: {fileID: 0}
@@ -7893,7 +7968,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8222863950748663225, guid: 247dc8aebe30ca2408e8293a883c75df, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.13013515
+      value: 0.18527031
+      objectReference: {fileID: 0}
+    - target: {fileID: 8222863950748663225, guid: 247dc8aebe30ca2408e8293a883c75df, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0549071
       objectReference: {fileID: 0}
     - target: {fileID: 8329787883158438443, guid: 247dc8aebe30ca2408e8293a883c75df, type: 3}
       propertyPath: toolTipText
@@ -8511,9 +8590,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1892050351966699856, guid: 8e7a02426e5bc434b9fbc56e22c9fec5, type: 3}
+      propertyPath: _screen
+      value: 
+      objectReference: {fileID: 1110977785}
+    - target: {fileID: 1892050351966699856, guid: 8e7a02426e5bc434b9fbc56e22c9fec5, type: 3}
       propertyPath: _toolTip
       value: 
       objectReference: {fileID: 1056807127}
+    - target: {fileID: 1892050351966699856, guid: 8e7a02426e5bc434b9fbc56e22c9fec5, type: 3}
+      propertyPath: _toolTip2
+      value: 
+      objectReference: {fileID: 1129776021}
     - target: {fileID: 1892050351966699856, guid: 8e7a02426e5bc434b9fbc56e22c9fec5, type: 3}
       propertyPath: _audioSource
       value: 
@@ -9900,7 +9987,7 @@ RectTransform:
   - {fileID: 761995774}
   - {fileID: 904169752}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: -43.198, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -10042,9 +10129,9 @@ MonoBehaviour:
   _camera: {fileID: 0}
   _audioSource: {fileID: 7965173044391283301}
   _toolTip: {fileID: 1056807127}
-  _toolTip2: {fileID: 1129776021}
+  _toolTip2: {fileID: 0}
   _animator: {fileID: 0}
-  _screen: {fileID: 1110977785}
+  _screen: {fileID: 0}
 --- !u!1 &2067820805
 GameObject:
   m_ObjectHideFlags: 0

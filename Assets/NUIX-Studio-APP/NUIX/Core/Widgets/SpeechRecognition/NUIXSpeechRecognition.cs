@@ -17,7 +17,8 @@ public class NUIXSpeechRecognition :  MonoBehaviour
 {
     public WordAction[] trigger_words;
     public AudioSource _audioSource;
-    public ToolTip _toolTip;
+    public Screen_Render _screen;
+    public ToolTip _toolTip, _toolTip2;
 
     //public UnityEvent<string> unityEvent;
     // Start is called before the first frame update
@@ -64,8 +65,34 @@ public class NUIXSpeechRecognition :  MonoBehaviour
                         {
                             if (n >= 30 && n <= 200)
                             {
-                                _audioSource.pitch = n / 132.0f;
-                                _toolTip.ToolTipText = number.ToString() + " beats";
+                                if (_audioSource.enabled)
+                                {
+                                    _audioSource.pitch = n / 132.0f;
+                                    _toolTip.ToolTipText = n.ToString() + " beats";
+                                }
+                            }
+                        }
+                    }
+                    break;
+                }
+            }
+            if (lword.StartsWith("channel") || lword.StartsWith("channel"))
+            {
+                char[] seps = new char[] { ' ' };
+                int ith = -1;
+                foreach (var number in lword.Split(seps, StringSplitOptions.RemoveEmptyEntries))
+                {
+                    ith = ith + 1;
+                    if (ith == 0) continue;
+                    Debug.Log("lword in: " + number);
+                    if (number.Length > 0)
+                    {
+                        int n = 0;
+                        if (int.TryParse(number, out n))
+                        {
+                            if (_screen.enabled) {
+                                _screen.ToChannel(n);
+                                _toolTip2.ToolTipText = n.ToString();
                             }
                         }
                     }
