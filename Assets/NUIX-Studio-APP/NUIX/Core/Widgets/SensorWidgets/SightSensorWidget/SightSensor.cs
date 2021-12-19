@@ -43,7 +43,7 @@ public class SightSensor : Sensor
         // Checking if the target object is inside the defined camera view
         Debug.Log("viewPos: "+viewPos.ToString());
         // if ((viewPos.z > 0.0F) && (viewPos.x < 1.0F) && (viewPos.x > 0.0F))
-        if (viewPos.z > 2.0F)
+        if (viewPos.z > 2.5F)
         {
             SensorTrigger();
         }
