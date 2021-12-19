@@ -10,13 +10,24 @@ public class GestureTwoDigits : GestureWidget
     {
         int number_left = getNumber(_handedness_left);
         int number_right = getNumber(_handedness_right);
-        if (number_left == -1 || number_right == -1) {
-            int number = number_left * 10 + number_right;
-            if (number >= 10) {
-                if (_screen.enabled) _screen.ToChannel(number);
+        if (HandJointUtils.TryGetJointPose(TrackedHandJoint.Palm, _handedness_left, out var palm)) {
+            if (number_right != -1) {
+                int number = number_right;
+                work(number);
             }
+        } else if (number_left != -1 && number_right != -1) {
+            int number = number_left * 10 + number_right;
+            work(number);
         }
         return false;
+    }
+
+    private void work(int number) {
+        Debug.Log("Two Digits: " + number.ToString() + " enabled: " + _screen.enabled.ToString());
+        if (_screen.enabled) {
+            _screen.ToChannel(number);
+            _toolTip.ToolTipText = number.ToString();
+        }
     }
 
     private int getNumber(Handedness hand) {

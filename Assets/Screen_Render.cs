@@ -11,7 +11,6 @@ public class Screen_Render : MonoBehaviour
     public Material[] channels;
     public Material screen_saver;
     public Material menu;
-    public ToolTip toolTip;
     int count;
     bool brightness_uping;
     bool brightness_downing;
@@ -24,7 +23,6 @@ public class Screen_Render : MonoBehaviour
     }
     public void ToChannel(int num) {
         if(num >= channels.Length) num = 0;
-        toolTip.ToolTipText = num.ToString();
         ChangeScreen(channels[num]);
     }
 

@@ -35,8 +35,10 @@ public class GestureKeyboardMultiple : GestureWidget
             }
         }
         else if (keyboardGrid != null && Time.time - keyboardActiveTime > 2f) {
+            Debug.Log("Keyboard Multiple: " + number.ToString() + " screen enabled: " + _screen.enabled.ToString() + " audio enabled: " + _audioSource.enabled.ToString());
             if (_screen.enabled) {
                 _screen.ToChannel(number);
+                _toolTip2.ToolTipText = number.ToString();
             }
             number = Math.Max(Math.Min(number, 200), 30);
             if (_audioSource.enabled) {
