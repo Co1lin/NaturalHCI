@@ -9175,6 +9175,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e7a02426e5bc434b9fbc56e22c9fec5, type: 3}
+--- !u!4 &1713306459 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8025788468202467125, guid: 8e7a02426e5bc434b9fbc56e22c9fec5, type: 3}
+  m_PrefabInstance: {fileID: 1713306458}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1721422929
 GameObject:
   m_ObjectHideFlags: 0
@@ -9993,6 +9998,82 @@ MonoBehaviour:
   _toolTip2: {fileID: 0}
   _animator: {fileID: 1465821350}
   _screen: {fileID: 0}
+--- !u!1 &1996519569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1996519570}
+  - component: {fileID: 1996519571}
+  m_Layer: 0
+  m_Name: ExampleWordAction 5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1996519570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996519569}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1713306459}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1996519571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996519569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b49cc43b03ec4460a56ce565a86f6fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  words:
+  - stop fans
+  - stop fan
+  - fans stop
+  - fan stop
+  wordRecognized:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1465821350}
+        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
+        m_MethodName: set_speed
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 759011953}
+        m_TargetAssemblyTypeName: Microsoft.MixedReality.Toolkit.UI.ToolTip, Microsoft.MixedReality.Toolkit.SDK
+        m_MethodName: set_ToolTipText
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 'speed: 0.0'
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2020598104
 GameObject:
   m_ObjectHideFlags: 0
@@ -19321,5 +19402,8 @@ MonoBehaviour:
   sheets:
   - {fileID: 2100000, guid: c9d8d50ba99fa43198d271575a8dfb67, type: 2}
   - {fileID: 2100000, guid: 259e4d3caea3f4bb68e8af85de37758e, type: 2}
+  - {fileID: 2100000, guid: 91b5d0150b809462c987c43711fa2704, type: 2}
+  - {fileID: 2100000, guid: 1d8beb637258440edaf7b28a5ecc5088, type: 2}
+  - {fileID: 2100000, guid: 4fa8b472df860408a88f679f4026eb74, type: 2}
   cur_page: 0
   activate_time: 0
