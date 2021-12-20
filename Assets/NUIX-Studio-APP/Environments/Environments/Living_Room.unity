@@ -8787,7 +8787,7 @@ PrefabInstance:
       objectReference: {fileID: 1996519571}
     - target: {fileID: 2432804286601716568, guid: 8e7a02426e5bc434b9fbc56e22c9fec5, type: 3}
       propertyPath: words.Array.size
-      value: 4
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2432804286601716568, guid: 8e7a02426e5bc434b9fbc56e22c9fec5, type: 3}
       propertyPath: words.Array.data[0]
@@ -8804,6 +8804,14 @@ PrefabInstance:
     - target: {fileID: 2432804286601716568, guid: 8e7a02426e5bc434b9fbc56e22c9fec5, type: 3}
       propertyPath: words.Array.data[3]
       value: draw the curtain
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432804286601716568, guid: 8e7a02426e5bc434b9fbc56e22c9fec5, type: 3}
+      propertyPath: words.Array.data[4]
+      value: goodnight
+      objectReference: {fileID: 0}
+    - target: {fileID: 2432804286601716568, guid: 8e7a02426e5bc434b9fbc56e22c9fec5, type: 3}
+      propertyPath: words.Array.data[5]
+      value: good evening
       objectReference: {fileID: 0}
     - target: {fileID: 2432804286601716568, guid: 8e7a02426e5bc434b9fbc56e22c9fec5, type: 3}
       propertyPath: wordRecognized.m_PersistentCalls.m_Calls.Array.size
