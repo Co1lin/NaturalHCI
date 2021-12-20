@@ -8777,6 +8777,14 @@ PrefabInstance:
       propertyPath: _audioSource
       value: 
       objectReference: {fileID: 7965173044391283301}
+    - target: {fileID: 1892050351966699856, guid: 8e7a02426e5bc434b9fbc56e22c9fec5, type: 3}
+      propertyPath: trigger_words.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1892050351966699856, guid: 8e7a02426e5bc434b9fbc56e22c9fec5, type: 3}
+      propertyPath: trigger_words.Array.data[4]
+      value: 
+      objectReference: {fileID: 1996519571}
     - target: {fileID: 2432804286601716568, guid: 8e7a02426e5bc434b9fbc56e22c9fec5, type: 3}
       propertyPath: words.Array.size
       value: 4
