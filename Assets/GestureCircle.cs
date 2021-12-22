@@ -72,12 +72,12 @@ public class GestureCircle : GestureWidget
                     else _animator.speed -= 0.2f;
                     _toolTip.ToolTipText = "speed: "+_animator.speed.ToString("0.0");
                 }
-                prev_time = Time.time;
-                List<Vector3> tmp = new List<Vector3>(history);
-                history.Clear();
-                for (int i = tmp.Count/2; i < tmp.Count; i++) {
-                    history.Add(tmp[i]);
-                }
+            }
+            prev_time = Time.time;
+            List<Vector3> tmp = new List<Vector3>(history);
+            history.Clear();
+            for (int i = tmp.Count/2; i < tmp.Count; i++) {
+                history.Add(tmp[i]);
             }
         }
         if (
